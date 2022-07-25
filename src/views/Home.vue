@@ -3,14 +3,17 @@
     <el-container>
       <el-main :style="cssProps">
         <div class="wrapper--forms">
-          
+          <label>Form Title</label>
+          <input class="header__input" type="text" v-model="forms.title">
+          <label>Form Description</label>
+          <input class="header__input" type="textarea" v-model="forms.desc">
           <!-- Show empty state if empty -->
-          <div v-if="forms.length == 0" class="emptyState">
+          <!-- <div v-if="forms.length == 0" class="emptyState">
             <span class="emptyState__emoji">╭( ✖_✖ )╮</span>
 
 
             <p class="emptyState__p">Drag one element to get started</p>
-          </div>
+          </div> -->
 
           <draggable :list="forms" class="dragArea" :options="sortElementOptions">
 
@@ -118,7 +121,11 @@ export default {
   },
 
   mounted() {
-    console.log("form ->", this.forms)
+    console.log("form title ->", JSON.stringify(this.forms.title))
+    console.log("form desc ->", JSON.stringify(this.forms.desc))
+    console.log("form JSON ->", JSON.stringify(this.forms))
+    console.log("form JSON ->", JSON.stringify(this.forms))
+    // console.log("form ->", this.forms)
     console.log("activeform ->", this.activeForm)
   },
 
@@ -156,12 +163,27 @@ export default {
 }
 
 .dragArea {
-  max-width: 600px;
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
   position: relative;
   min-height: 10px;
   z-index: 2;
+}
+
+.header__input {
+  border: 1px solid #DCDFE6;
+  height: 40px;
+  width: 100%;
+  line-height: 40px;
+  box-sizing: border-box;
+  color: #606266;
+  display: inline-block;
+  background-color: #fff;
+  padding: 0 15px;
+  border-radius: 4px;
+  margin-top: 10px;
+  margin-bottom: 25px;
 }
 
 .form__selectedlabel {

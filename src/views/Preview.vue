@@ -3,8 +3,11 @@
     <el-container>
       <el-main :style="cssProps">
         <div class="wrapper--forms preview__wrapper">
+          <h1 v-if="!forms.title">Form Title</h1>
           <h1>{{ forms.title }}</h1>
-          <p>{{ forms.desc }}</p>
+          <p style="margin-top: 25px; margin-bottom: 20px" v-if="!forms.desc">Form Description</p>
+          <p style="margin-top: 25px; margin-bottom: 20px">{{ forms.desc }}</p>
+          <hr>
           <div v-for="(form, index) in forms" 
                :key="index" 
                v-bind="form"

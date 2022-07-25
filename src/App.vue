@@ -17,9 +17,9 @@
       </div>
     </div>
 
-    <div class="demo-footer">
+    <!-- <div class="demo-footer">
       <a href="https://github.com/jmeei/vue-formbuilder">GitHub Repo</a>
-    </div>
+    </div> -->
   </div>
 </template>
 
