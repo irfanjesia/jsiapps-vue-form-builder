@@ -1,0 +1,56 @@
+[
+    {
+        "fieldType": "TextInput",
+        "isUnique": false,
+        "isPlaceholderVisible": false,
+        "placeholder": "Input your text here...",
+        "label": "Enter your field label",
+        "isHelpBlockVisible": false,
+        "helpBlockText": "Please input your helpblock here...",
+        "isRequired": false
+    },
+    {
+        "fieldType": "RadioButton",
+        "isUnique": false,
+        "label": "Enter your field label",
+        "isHelpBlockVisible": false,
+        "helpBlockText": "Please input your helpblock here...",
+        "isRequired": false,
+        "options": [
+            {
+                "optionLabel": "Option 1",
+                "optionValue": "Option 1"
+            },
+            {
+                "optionLabel": "Option 2",
+                "optionValue": "Option 2"
+            }
+        ]
+    },
+    {
+        "fieldType": "TimePicker",
+        "isUnique": false,
+        "label": "Enter your field label",
+        "isHelpBlockVisible": false,
+        "helpBlockText": "Please input your helpblock here...",
+        "isRequired": false
+    },
+    {
+        "fieldType": "SelectList",
+        "isUnique": false,
+        "label": "Enter your field label",
+        "isHelpBlockVisible": false,
+        "helpBlockText": "Please input your helpblock here...",
+        "isRequired": false,
+        "options": [
+            {
+                "optionLabel": "Option 1",
+                "optionValue": "Option 1"
+            },
+            {
+                "optionLabel": "Option 2",
+                "optionValue": "Option 2"
+            }
+        ]
+    }
+]

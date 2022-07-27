@@ -16,6 +16,11 @@ export default new VueRouter({
     		path: '/preview',
       		name: 'preview',
       		component: () => import("@/views/Preview")
+    	},
+    	{
+    		path: '/test',
+      		name: 'JSON',
+      		component: () => import("@/views/JSON")
     	}
   	]
 })

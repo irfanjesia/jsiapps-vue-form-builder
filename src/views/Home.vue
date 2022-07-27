@@ -115,18 +115,17 @@ export default {
       }
 
       console.log("result", result)
+      console.log("result JSON", JSON.stringify(result))
 
       return result;
     }
   },
 
   mounted() {
-    console.log("form title ->", JSON.stringify(this.forms.title))
-    console.log("form desc ->", JSON.stringify(this.forms.desc))
-    console.log("form JSON ->", JSON.stringify(this.forms))
+    console.log("form header ->", "{", '"title":', JSON.stringify(this.forms.title), ",", '"desc":', JSON.stringify(this.forms.desc), "}")
     console.log("form JSON ->", JSON.stringify(this.forms))
     // console.log("form ->", this.forms)
-    console.log("activeform ->", this.activeForm)
+    // console.log("activeform ->", this.activeForm)
   },
 
   components: FormBuilder.$options.components,
