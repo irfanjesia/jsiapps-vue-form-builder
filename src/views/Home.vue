@@ -7,6 +7,10 @@
           <input class="header__input" type="text" v-model="forms.title">
           <label>Form Description</label>
           <input class="header__input" type="textarea" v-model="forms.desc">
+          <div v-if="forms.length == 0">
+          <p style="text-align: center; margin-bottom: 20px;">Drag an element to get started</p>
+          </div>
+
           <!-- Show empty state if empty -->
           <!-- <div v-if="forms.length == 0" class="emptyState">
             <span class="emptyState__emoji">╭( ✖_✖ )╮</span>
@@ -51,8 +55,7 @@
         </div>
 
         <div class="wrapper--snippet">
-          <pre style="margin-bottom: -30px;">Form Title: {{ forms.title }}</pre>
-          <pre style="margin-bottom: -30px;">Form Description: {{ forms.desc }}</pre>
+          <pre style="margin-bottom: -30px;">Form Header: { "title": "{{ forms.title }}", "desc": "{{ forms.desc }}" }</pre>
           <pre>Form Data: {{ forms }}</pre>
         </div>
       </el-main>
@@ -67,9 +70,9 @@
             <properties v-show="Object.keys($store.activeForm).length > 0"></properties>
           </el-tab-pane>
 
-          <el-tab-pane name="designs" label="Styles">
+          <!-- <el-tab-pane name="designs" label="Styles">
             <theming></theming>
-          </el-tab-pane>
+          </el-tab-pane> -->
         </el-tabs>
 
         <!--{{ $store.activeForm }}-->
@@ -123,7 +126,7 @@ export default {
 
   mounted() {
     console.log("form header ->", "{", '"title":', JSON.stringify(this.forms.title), ",", '"desc":', JSON.stringify(this.forms.desc), "}")
-    console.log("form JSON ->", JSON.stringify(this.forms))
+    console.log("form data ->", JSON.stringify(this.forms))
     // console.log("form ->", this.forms)
     // console.log("activeform ->", this.activeForm)
   },

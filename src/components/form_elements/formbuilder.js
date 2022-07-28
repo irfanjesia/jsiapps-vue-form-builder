@@ -12,16 +12,14 @@ import TimePicker 			from '@/components/form_elements/FormElementTimePicker'
 import DatePicker 			from '@/components/form_elements/FormElementDatePicker'
 import DatetimePicker 		from '@/components/form_elements/FormElementDatetimePicker'
 import Rating 				from '@/components/form_elements/FormElementRating'
-import Button 				from '@/components/form_elements/FormElementButton'
 import TextEditor			from '@/components/form_elements/FormElementTextEditor'
 
 import Elements         	from '@/components/form_elements/Elements'
 import Properties			from '@/components/form_elements/Properties'
-import Theming	 		 	from '@/components/form_elements/Theming'
 
 
 export const FormBuilder = new Vue({
-	components: { Elements, Properties, Theming, draggable, TextInput, LongTextInput, NumberInput, SelectList, RadioButton, Checkbox, TimePicker, DatePicker, DatetimePicker, Rating, Button, TextEditor },
+	components: { Elements, Properties, draggable, TextInput, LongTextInput, NumberInput, SelectList, RadioButton, Checkbox, TimePicker, DatePicker, DatetimePicker, Rating, TextEditor },
 	data() {
 	    return {
 	      	fields: [
@@ -126,18 +124,8 @@ export const FormBuilder = new Vue({
 	          		'isUnique': false
 		      	},
 		      	{
-	          		'name': 'Button',
-	          		'text': 'Button',
-	          		'group': 'button',
-	          		'hasOptions': false,
-	          		'isRequired': false,
-	          		'isHelpBlockVisible': false,
-	          		'isPlaceholderVisible': false,
-	          		'isUnique': true
-		      	},
-		      	{
 	          		'name': 'TextEditor',
-	          		'text': 'Text editor',
+	          		'text': 'Text Editor',
 	          		'group': 'static',
 	          		'hasOptions': false,
 	          		'isRequired': false,

@@ -55,14 +55,9 @@
           newField ["isRequired"] = false;
         }
 
-        if (field.group == "button"){
-          newField ["buttonText"] = "Submit your form";
-        }
-
         if (field.name == "TextEditor"){
           newField ["fieldText"] = "Start typing...";
         }
-
 
         // Add dummy options for loading the radio/checkbox
         if (field.hasOptions){

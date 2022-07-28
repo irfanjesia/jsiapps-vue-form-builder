@@ -21,6 +21,9 @@
                             {{ form.helpBlockText }}
                         </small>
                     </div>
+                    <a href="/test"><button type="button" class="el-button form__button el-button--primary"
+                            style="margin-top: 25px"><span>Submit</span></button>
+                    </a>
                 </div>
             </el-main>
         </el-container>
@@ -34,8 +37,8 @@ import header from '../assets/json/header.json'
 
 export default {
     name: 'JSON',
-    data(){
-        return{
+    data() {
+        return {
             json: json,
             header: header
         }

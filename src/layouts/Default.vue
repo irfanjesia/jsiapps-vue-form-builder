@@ -3,7 +3,8 @@
 		<el-header>
 			<el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" :router="true">
 			  <el-menu-item index="/">Design</el-menu-item>
-			  <el-menu-item index="/Preview">Preview</el-menu-item>
+			  <el-menu-item index="/preview">Preview</el-menu-item>
+			  <el-menu-item index="/test">JSON Test</el-menu-item>
 			</el-menu>
 		</el-header>
 
