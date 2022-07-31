@@ -4,15 +4,69 @@
         "isUnique": false,
         "isPlaceholderVisible": false,
         "placeholder": "Input your text here...",
-        "label": "Enter your field label",
+        "label": "Text",
         "isHelpBlockVisible": false,
         "helpBlockText": "Please input your helpblock here...",
         "isRequired": false
     },
     {
+        "fieldType": "LongTextInput",
+        "isUnique": false,
+        "isPlaceholderVisible": false,
+        "placeholder": "Input your text here...",
+        "label": "Long Text",
+        "isHelpBlockVisible": false,
+        "helpBlockText": "Please input your helpblock here...",
+        "isRequired": false
+    },
+    {
+        "fieldType": "NumberInput",
+        "isUnique": false,
+        "label": "Number",
+        "isHelpBlockVisible": false,
+        "helpBlockText": "Please input your helpblock here...",
+        "isRequired": false
+    },
+    {
+        "fieldType": "SelectList",
+        "isUnique": false,
+        "label": "Select",
+        "isHelpBlockVisible": false,
+        "helpBlockText": "Please input your helpblock here...",
+        "isRequired": false,
+        "options": [
+            {
+                "optionLabel": "Option 1",
+                "optionValue": "Option 1"
+            },
+            {
+                "optionLabel": "Option 2",
+                "optionValue": "Option 2"
+            }
+        ]
+    },
+    {
         "fieldType": "RadioButton",
         "isUnique": false,
-        "label": "Enter your field label",
+        "label": "Radio",
+        "isHelpBlockVisible": false,
+        "helpBlockText": "Please input your helpblock here...",
+        "isRequired": false,
+        "options": [
+            {
+                "optionLabel": "Option 1",
+                "optionValue": "Option 1"
+            },
+            {
+                "optionLabel": "Option 2",
+                "optionValue": "Option 2"
+            }
+        ]
+    },
+    {
+        "fieldType": "Checkbox",
+        "isUnique": false,
+        "label": "Checkbox",
         "isHelpBlockVisible": false,
         "helpBlockText": "Please input your helpblock here...",
         "isRequired": false,
@@ -30,27 +84,33 @@
     {
         "fieldType": "TimePicker",
         "isUnique": false,
-        "label": "Enter your field label",
+        "label": "Time Picker",
         "isHelpBlockVisible": false,
         "helpBlockText": "Please input your helpblock here...",
         "isRequired": false
     },
     {
-        "fieldType": "SelectList",
+        "fieldType": "DatePicker",
         "isUnique": false,
-        "label": "Enter your field label",
+        "label": "Date Picker",
         "isHelpBlockVisible": false,
         "helpBlockText": "Please input your helpblock here...",
-        "isRequired": false,
-        "options": [
-            {
-                "optionLabel": "Option 1",
-                "optionValue": "Option 1"
-            },
-            {
-                "optionLabel": "Option 2",
-                "optionValue": "Option 2"
-            }
-        ]
+        "isRequired": false
+    },
+    {
+        "fieldType": "DatetimePicker",
+        "isUnique": false,
+        "label": "Date-Time Picker",
+        "isHelpBlockVisible": false,
+        "helpBlockText": "Please input your helpblock here...",
+        "isRequired": false
+    },
+    {
+        "fieldType": "Rating",
+        "isUnique": false,
+        "label": "Rating",
+        "isHelpBlockVisible": false,
+        "helpBlockText": "Please input your helpblock here...",
+        "isRequired": false
     }
 ]

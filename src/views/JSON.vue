@@ -21,7 +21,7 @@
                             {{ form.helpBlockText }}
                         </small>
                     </div>
-                    <a href="/test"><button type="button" class="el-button form__button el-button--primary"
+                    <a><button type="button" @click="onSubmit" class="el-button form__button el-button--primary"
                             style="margin-top: 25px"><span>Submit</span></button>
                     </a>
                 </div>
@@ -69,6 +69,23 @@ export default {
             }
 
             return result;
+        }
+    },
+    methods: {
+        onSubmit() {
+            // Output label
+            let formLabel = document.querySelectorAll('label');
+            formLabel.forEach(formLabel => {
+                console.log(formLabel.innerText);
+            });
+            // Output value
+            let userInputs = document.querySelectorAll('input');
+            userInputs.forEach(userInput => {
+                console.log(userInput.value);
+            });
+            // var selectElement = document.querySelector('input');
+            // var selectedValue = selectElement.value;
+            // console.log('Form values: ', selectedValue)
         }
     }
 }
