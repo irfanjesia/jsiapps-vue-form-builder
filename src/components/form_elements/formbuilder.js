@@ -102,37 +102,37 @@ export const FormBuilder = new Vue({
 	          		'isHelpBlockVisible': false,
 	          		'isPlaceholderVisible': false,
 	          		'isUnique': false 
-		      	},
-		      	{
-	          		'name': 'DatetimePicker',
-	          		'text': 'Date-Time Picker',
-	          		'group': 'form',
-	          		'hasOptions': false,
-	          		'isRequired': false,
-	          		'isHelpBlockVisible': false,
-	          		'isPlaceholderVisible': false,
-	          		'isUnique': false 
-		      	},
-		      	{
-	          		'name': 'Rating',
-	          		'text': 'Rating',
-	          		'group': 'form',
-	          		'hasOptions': false,
-	          		'isRequired': false,
-	          		'isHelpBlockVisible': false,
-	          		'isPlaceholderVisible': false,
-	          		'isUnique': false
-		      	},
-		      	{
-	          		'name': 'TextEditor',
-	          		'text': 'Text Editor',
-	          		'group': 'static',
-	          		'hasOptions': false,
-	          		'isRequired': false,
-	          		'isHelpBlockVisible': false,
-	          		'isPlaceholderVisible': false,
-	          		'isUnique': false
 		      	}
+		      	// {
+	          	// 	'name': 'DatetimePicker',
+	          	// 	'text': 'Date-Time Picker',
+	          	// 	'group': 'form',
+	          	// 	'hasOptions': false,
+	          	// 	'isRequired': false,
+	          	// 	'isHelpBlockVisible': false,
+	          	// 	'isPlaceholderVisible': false,
+	          	// 	'isUnique': false 
+		      	// },
+		      	// {
+	          	// 	'name': 'Rating',
+	          	// 	'text': 'Rating',
+	          	// 	'group': 'form',
+	          	// 	'hasOptions': false,
+	          	// 	'isRequired': false,
+	          	// 	'isHelpBlockVisible': false,
+	          	// 	'isPlaceholderVisible': false,
+	          	// 	'isUnique': false
+		      	// },
+		      	// {
+	          	// 	'name': 'TextEditor',
+	          	// 	'text': 'Text Editor',
+	          	// 	'group': 'static',
+	          	// 	'hasOptions': false,
+	          	// 	'isRequired': false,
+	          	// 	'isHelpBlockVisible': false,
+	          	// 	'isPlaceholderVisible': false,
+	          	// 	'isUnique': false
+		      	// }
 	      	],
 
 	      	sortElementOptions: {

@@ -96,21 +96,5 @@
         "isHelpBlockVisible": false,
         "helpBlockText": "Please input your helpblock here...",
         "isRequired": false
-    },
-    {
-        "fieldType": "DatetimePicker",
-        "isUnique": false,
-        "label": "Date-Time Picker",
-        "isHelpBlockVisible": false,
-        "helpBlockText": "Please input your helpblock here...",
-        "isRequired": false
-    },
-    {
-        "fieldType": "Rating",
-        "isUnique": false,
-        "label": "Rating",
-        "isHelpBlockVisible": false,
-        "helpBlockText": "Please input your helpblock here...",
-        "isRequired": false
     }
 ]

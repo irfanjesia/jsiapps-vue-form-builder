@@ -74,15 +74,20 @@ export default {
     methods: {
         onSubmit() {
             // Output label
-            let formLabel = document.querySelectorAll('label');
-            formLabel.forEach(formLabel => {
-                console.log(formLabel.innerText);
-            });
-            // Output value
-            let userInputs = document.querySelectorAll('input');
+            for (var i = 0; i < this.json.length; i++) {
+            console.log('Form label: ', this.json[i]['label']);
+            }
+
+            // Output value (gajelas)
+            let userInputs = document.querySelectorAll('.el-input__inner');
             userInputs.forEach(userInput => {
-                console.log(userInput.value);
+                console.log("input type:", userInput.value);
             });
+            let textAreas = document.querySelectorAll('.el-textarea__inner');
+            textAreas.forEach(textArea => {
+                console.log("textarea type:", textArea.value);
+            });
+            
             // var selectElement = document.querySelector('input');
             // var selectedValue = selectElement.value;
             // console.log('Form values: ', selectedValue)

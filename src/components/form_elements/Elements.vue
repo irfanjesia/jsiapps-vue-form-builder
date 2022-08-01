@@ -105,10 +105,6 @@
     border-bottom: 2px solid black;
     margin-top: 2px;
     margin-bottom: 2px;
-    
-    [type="button"] {
-      display: none;
-    }
 
     &:before {
       content: "Drag it here";

@@ -19,7 +19,7 @@
               {{ form.helpBlockText }}
             </small>
           </div>
-          <a href="/preview"><button type="button" @click="onSubmit" class="el-button form__button el-button--primary"
+          <a href="/preview"><button type="button" class="el-button form__button el-button--primary"
               style="margin-top: 25px"><span>Submit</span></button>
           </a>
         </div>
