@@ -73,24 +73,26 @@ export default {
     },
     methods: {
         onSubmit() {
-            // Output label
-            for (var i = 0; i < this.json.length; i++) {
-            console.log('Form label: ', this.json[i]['label']);
-            }
+            // Output fieldtype
+            // for (var i = 0; i < this.json.length; i++) {
+            //     console.log('Form label: ', this.json[i]['fieldType']);
+            // }
 
-            // Output value (gajelas)
+            // Input type
             let userInputs = document.querySelectorAll('.el-input__inner');
             userInputs.forEach(userInput => {
-                console.log("input type:", userInput.value);
+                if (userInput.parentElement.parentElement.parentElement.innerText) {
+                    console.log("{", JSON.stringify(userInput.parentElement.parentElement.parentElement.innerText), ': ', JSON.stringify(userInput.value), "}")
+                } else {
+                    console.log("{", JSON.stringify(userInput.parentElement.parentElement.parentElement.parentElement.innerText), ': ', JSON.stringify(userInput.value), "}")
+                }
             });
+
+            // Textarea type
             let textAreas = document.querySelectorAll('.el-textarea__inner');
             textAreas.forEach(textArea => {
-                console.log("textarea type:", textArea.value);
+                console.log("{", JSON.stringify(textArea.parentElement.parentElement.parentElement.innerText), ': ', JSON.stringify(textArea.value), "}")
             });
-            
-            // var selectElement = document.querySelector('input');
-            // var selectedValue = selectElement.value;
-            // console.log('Form values: ', selectedValue)
         }
     }
 }

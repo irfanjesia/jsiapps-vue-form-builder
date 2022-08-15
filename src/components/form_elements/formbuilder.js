@@ -10,16 +10,13 @@ import RadioButton 			from '@/components/form_elements/FormElementRadioButton'
 import Checkbox 			from '@/components/form_elements/FormElementCheckbox'
 import TimePicker 			from '@/components/form_elements/FormElementTimePicker'
 import DatePicker 			from '@/components/form_elements/FormElementDatePicker'
-import DatetimePicker 		from '@/components/form_elements/FormElementDatetimePicker'
-import Rating 				from '@/components/form_elements/FormElementRating'
-import TextEditor			from '@/components/form_elements/FormElementTextEditor'
 
 import Elements         	from '@/components/form_elements/Elements'
 import Properties			from '@/components/form_elements/Properties'
 
 
 export const FormBuilder = new Vue({
-	components: { Elements, Properties, draggable, TextInput, LongTextInput, NumberInput, SelectList, RadioButton, Checkbox, TimePicker, DatePicker, DatetimePicker, Rating, TextEditor },
+	components: { Elements, Properties, draggable, TextInput, LongTextInput, NumberInput, SelectList, RadioButton, Checkbox, TimePicker, DatePicker },
 	data() {
 	    return {
 	      	fields: [
@@ -103,36 +100,6 @@ export const FormBuilder = new Vue({
 	          		'isPlaceholderVisible': false,
 	          		'isUnique': false 
 		      	}
-		      	// {
-	          	// 	'name': 'DatetimePicker',
-	          	// 	'text': 'Date-Time Picker',
-	          	// 	'group': 'form',
-	          	// 	'hasOptions': false,
-	          	// 	'isRequired': false,
-	          	// 	'isHelpBlockVisible': false,
-	          	// 	'isPlaceholderVisible': false,
-	          	// 	'isUnique': false 
-		      	// },
-		      	// {
-	          	// 	'name': 'Rating',
-	          	// 	'text': 'Rating',
-	          	// 	'group': 'form',
-	          	// 	'hasOptions': false,
-	          	// 	'isRequired': false,
-	          	// 	'isHelpBlockVisible': false,
-	          	// 	'isPlaceholderVisible': false,
-	          	// 	'isUnique': false
-		      	// },
-		      	// {
-	          	// 	'name': 'TextEditor',
-	          	// 	'text': 'Text Editor',
-	          	// 	'group': 'static',
-	          	// 	'hasOptions': false,
-	          	// 	'isRequired': false,
-	          	// 	'isHelpBlockVisible': false,
-	          	// 	'isPlaceholderVisible': false,
-	          	// 	'isUnique': false
-		      	// }
 	      	],
 
 	      	sortElementOptions: {

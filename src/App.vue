@@ -17,11 +17,11 @@
       </div>
     </div>
 
-    <div class="demo-footer" v-if="this.$route.name == 'home'">
+    <!-- <div class="demo-footer" v-if="this.$route.name == 'home'"> -->
       <!-- masih error cuma buat testing aja dulu -->
       <!-- <a href="https://github.com/jmeei/vue-formbuilder">Github Repo</a> -->
-      <a href="/">Save Form</a>
-    </div>
+      <!-- <a href="/">Save Form</a> -->
+    <!-- </div> -->
   </div>
 </template>
 
