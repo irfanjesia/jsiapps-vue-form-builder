@@ -73,18 +73,13 @@ export default {
     },
     methods: {
         onSubmit() {
-            // Output fieldtype
-            // for (var i = 0; i < this.json.length; i++) {
-            //     console.log('Form label: ', this.json[i]['fieldType']);
-            // }
-
             // Input type
-            let userInputs = document.querySelectorAll('.el-input__inner');
-            userInputs.forEach(userInput => {
-                if (userInput.parentElement.parentElement.parentElement.innerText) {
-                    console.log("{", JSON.stringify(userInput.parentElement.parentElement.parentElement.innerText), ': ', JSON.stringify(userInput.value), "}")
+            let inputs = document.querySelectorAll('.el-input__inner');
+            inputs.forEach(input => {
+                if (input.parentElement.parentElement.parentElement.innerText) {
+                    console.log("{", JSON.stringify(input.parentElement.parentElement.parentElement.innerText), ': ', JSON.stringify(input.value), "}")
                 } else {
-                    console.log("{", JSON.stringify(userInput.parentElement.parentElement.parentElement.parentElement.innerText), ': ', JSON.stringify(userInput.value), "}")
+                    console.log("{", JSON.stringify(input.parentElement.parentElement.parentElement.parentElement.innerText), ': ', JSON.stringify(input.value), "}")
                 }
             });
 
@@ -92,6 +87,18 @@ export default {
             let textAreas = document.querySelectorAll('.el-textarea__inner');
             textAreas.forEach(textArea => {
                 console.log("{", JSON.stringify(textArea.parentElement.parentElement.parentElement.innerText), ': ', JSON.stringify(textArea.value), "}")
+            });
+
+             // Radio type
+            let radios = document.querySelectorAll('.el-radio__original');
+            radios.forEach(radio => {
+                console.log("{", JSON.stringify(radio.parentElement.parentElement.parentElement.parentElement.innerText.split("\n")[0]), ': ', JSON.stringify(radio.value), "}")
+            });
+
+             // Checkbox type
+            let checkboxes = document.querySelectorAll('.el-checkbox__original');
+            checkboxes.forEach(checkbox => {
+                console.log("{", JSON.stringify(checkbox.parentElement.parentElement.parentElement.parentElement.parentElement.innerText.split("\n")[0]), ': ', JSON.stringify(checkbox.value), "}")
             });
         }
     }

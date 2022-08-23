@@ -8,20 +8,10 @@
           <label>Form Description</label>
           <input class="header__input" type="textarea" v-model="forms.desc">
           <div v-if="forms.length == 0">
-          <p style="text-align: center; margin-bottom: 20px;">Drag an element to get started</p>
+            <p style="text-align: center; margin-bottom: 20px;">Drag an element to get started</p>
           </div>
 
-          <!-- Show empty state if empty -->
-          <!-- <div v-if="forms.length == 0" class="emptyState">
-            <span class="emptyState__emoji">╭( ✖_✖ )╮</span>
-
-
-            <p class="emptyState__p">Drag one element to get started</p>
-          </div> -->
-
           <draggable :list="forms" class="dragArea" :options="sortElementOptions">
-
-            <!-- The form elements starts (on the right) -->
             <div v-for="(form, index) in forms" :key="index" v-bind="form" class="form__group"
               :class="{ 'is--active': form === activeForm }">
 
@@ -55,7 +45,8 @@
         </div>
 
         <div class="wrapper--snippet">
-          <pre style="margin-bottom: -30px;">Form Header: { "title": "{{ forms.title }}", "desc": "{{ forms.desc }}" }</pre>
+          <pre
+            style="margin-bottom: -30px;">Form Header: { "title": "{{ forms.title }}", "desc": "{{ forms.desc }}" }</pre>
           <pre>Form Data: {{ forms }}</pre>
         </div>
       </el-main>
@@ -69,13 +60,7 @@
           <el-tab-pane name="properties" label="Properties">
             <properties v-show="Object.keys($store.activeForm).length > 0"></properties>
           </el-tab-pane>
-
-          <!-- <el-tab-pane name="designs" label="Styles">
-            <theming></theming>
-          </el-tab-pane> -->
         </el-tabs>
-
-        <!--{{ $store.activeForm }}-->
       </el-aside>
     </el-container>
   </div>
@@ -153,15 +138,6 @@ export default {
 <style lang="scss" scoped>
 .main__wrapper {
   height: 100%;
-}
-
-.emptyState {
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
 }
 
 .dragArea {
