@@ -71,7 +71,7 @@
         "label": "Radio",
         "isHelpBlockVisible": false,
         "helpBlockText": "Please input your helpblock here...",
-        "isRequired": false,
+        "isRequired": true,
         "options": [
             {
                 "optionLabel": "Option 1",

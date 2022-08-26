@@ -89,16 +89,27 @@ export default {
                 console.log("{", JSON.stringify(textArea.parentElement.parentElement.parentElement.innerText), ': ', JSON.stringify(textArea.value), "}")
             });
 
-             // Radio type
+            // Radio type
             let radios = document.querySelectorAll('.el-radio__original');
             radios.forEach(radio => {
-                console.log("{", JSON.stringify(radio.parentElement.parentElement.parentElement.parentElement.innerText.split("\n")[0]), ': ', JSON.stringify(radio.value), "}")
+                if (radio.parentElement.classList.contains('is-checked')) {
+                    console.log("{", JSON.stringify(radio.parentElement.parentElement.parentElement.parentElement.innerText.split("\n")[0]), ': ', JSON.stringify(radio.value), "}")
+                }
             });
 
-             // Checkbox type
+            // cek is required true or false
+
+            // null handling?
+            if (radios[0].parentElement.classList.contains('is-checked')===false) {
+                console.log('aaaa')
+            }
+            
+            // Checkbox type
             let checkboxes = document.querySelectorAll('.el-checkbox__original');
             checkboxes.forEach(checkbox => {
-                console.log("{", JSON.stringify(checkbox.parentElement.parentElement.parentElement.parentElement.parentElement.innerText.split("\n")[0]), ': ', JSON.stringify(checkbox.value), "}")
+                if (checkbox.parentElement.classList.contains('is-checked')) {
+                    console.log("{", JSON.stringify(checkbox.parentElement.parentElement.parentElement.parentElement.parentElement.innerText.split("\n")[0]), ': ', JSON.stringify(checkbox.value), "}")
+                }
             });
         }
     }
