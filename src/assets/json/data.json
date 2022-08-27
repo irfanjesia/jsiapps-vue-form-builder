@@ -4,7 +4,7 @@
         "isUnique": false,
         "isPlaceholderVisible": false,
         "placeholder": "Input your text here...",
-        "label": "Text 1",
+        "label": "Text",
         "isHelpBlockVisible": false,
         "helpBlockText": "Input your helpblock here...",
         "isRequired": false
@@ -14,7 +14,7 @@
         "isUnique": false,
         "isPlaceholderVisible": false,
         "placeholder": "Input your text here...",
-        "label": "Long Text 1",
+        "label": "Long Text",
         "isHelpBlockVisible": false,
         "helpBlockText": "Input your helpblock here...",
         "isRequired": false
