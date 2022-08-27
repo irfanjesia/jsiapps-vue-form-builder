@@ -1,10 +1,7 @@
 <template>
   <div>
     <el-select v-model="value" placeholder="Select">
-      <el-option
-        v-for="item in currentField.options"
-        :key="item.optionValue"
-        :value="item.optionValue"
+      <el-option v-for="item in currentField.options" :key="item.optionValue" :value="item.optionValue"
         :label="item.optionValue">
       </el-option>
     </el-select>
@@ -13,13 +10,13 @@
 
 
 <script>
-  export default {
-    name: 'SelectList',
-    props: ['currentField'],
-    data(){
-    	return {
-    		value: ""
-    	}
+export default {
+  name: 'SelectList',
+  props: ['currentField'],
+  data() {
+    return {
+      value: ""
     }
   }
+}
 </script>

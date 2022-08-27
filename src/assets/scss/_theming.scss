@@ -1,8 +1,8 @@
 // Mixin for css custom properties
 // eg: @include variable(background, blue, --theme-bg)
 @mixin variable($property, $fallback, $variable) {
-  #{$property}: $fallback;
-  #{$property}: var($variable);
+	#{$property}: $fallback;
+	#{$property}: var($variable);
 }
 
 // List all the theming styles
@@ -15,13 +15,27 @@
 	a {
 		@include variable(color, #206C92, --theme-global-link-color);
 	}
-	
+
 	// Typography
-	h1 { font-size: 2em; }
-	h2 { font-size: 1.5em; }
-	h3 { font-size: 1.17em; }
-	h4 { font-size: 1.12em; }
-	h5 { font-size: .83em; }
+	h1 {
+		font-size: 2em;
+	}
+
+	h2 {
+		font-size: 1.5em;
+	}
+
+	h3 {
+		font-size: 1.17em;
+	}
+
+	h4 {
+		font-size: 1.12em;
+	}
+
+	h5 {
+		font-size: .83em;
+	}
 
 	.form__label {
 		display: block;
@@ -45,7 +59,7 @@
 	.el-textarea__inner {
 		@include variable(border-color, #dcdfe6, --theme-input-border-color);
 		@include variable(border-radius, 4, --theme-input-border-radius);
-		
+
 		&:hover {
 			@include variable(border-color, #dcdfe6, --theme-input-hover-border-color);
 		}

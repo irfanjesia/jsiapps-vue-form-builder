@@ -10,31 +10,11 @@
         "isRequired": false
     },
     {
-        "fieldType": "TextInput",
-        "isUnique": false,
-        "isPlaceholderVisible": false,
-        "placeholder": "Input your text here...",
-        "label": "Text 2",
-        "isHelpBlockVisible": false,
-        "helpBlockText": "Input your helpblock here...",
-        "isRequired": false
-    },
-    {
         "fieldType": "LongTextInput",
         "isUnique": false,
         "isPlaceholderVisible": false,
         "placeholder": "Input your text here...",
         "label": "Long Text 1",
-        "isHelpBlockVisible": false,
-        "helpBlockText": "Input your helpblock here...",
-        "isRequired": false
-    },
-    {
-        "fieldType": "LongTextInput",
-        "isUnique": false,
-        "isPlaceholderVisible": false,
-        "placeholder": "Input your text here...",
-        "label": "Long Text 2",
         "isHelpBlockVisible": false,
         "helpBlockText": "Input your helpblock here...",
         "isRequired": false
@@ -82,12 +62,42 @@
         "isRequired": true,
         "options": [
             {
-                "optionLabel": "Option 1",
-                "optionValue": "Option 1"
+                "optionLabel": "Radio button option 1",
+                "optionValue": "Radio button option 1"
             },
             {
-                "optionLabel": "Option 2",
-                "optionValue": "Option 2"
+                "optionLabel": "Radio button option 2",
+                "optionValue": "Radio button option 2"
+            },
+            {
+                "optionLabel": "Radio button option 3",
+                "optionValue": "Radio button option 3"
+            },
+            {
+                "optionLabel": "Radio button option 4",
+                "optionValue": "Radio button option 4"
+            },
+            {
+                "optionLabel": "Radio button option 5",
+                "optionValue": "Radio button option 5"
+            }
+        ]
+    },
+    {
+        "fieldType": "RadioButton",
+        "isUnique": false,
+        "label": "Radio 2",
+        "isHelpBlockVisible": false,
+        "helpBlockText": "Input your helpblock here...",
+        "isRequired": true,
+        "options": [
+            {
+                "optionLabel": "Longer radio button option 1 for testing purposes",
+                "optionValue": "Longer radio button option 1 for testing purposes"
+            },
+            {
+                "optionLabel": "Longer radio button option 2 for testing purposes",
+                "optionValue": "Longer radio button option 2 for testing purposes"
             }
         ]
     },
@@ -100,12 +110,38 @@
         "isRequired": false,
         "options": [
             {
-                "optionLabel": "Option 1",
-                "optionValue": "Option 1"
+                "optionLabel": "Checkbox button option 1",
+                "optionValue": "Checkbox button option 1"
             },
             {
-                "optionLabel": "Option 2",
-                "optionValue": "Option 2"
+                "optionLabel": "Checkbox button option 2",
+                "optionValue": "Checkbox button option 2"
+            },
+            {
+                "optionLabel": "Checkbox button option 3",
+                "optionValue": "Checkbox button option 3"
+            },
+            {
+                "optionLabel": "Checkbox button option 4",
+                "optionValue": "Checkbox button option 4"
+            }
+        ]
+    },
+    {
+        "fieldType": "Checkbox",
+        "isUnique": false,
+        "label": "Checkbox 2",
+        "isHelpBlockVisible": false,
+        "helpBlockText": "Input your helpblock here...",
+        "isRequired": false,
+        "options": [
+            {
+                "optionLabel": "Longer checkbox button option 1 for testing purposes",
+                "optionValue": "Longer checkbox button option 1 for testing purposes"
+            },
+            {
+                "optionLabel": "Longer checkbox button option 2 for testing purposes",
+                "optionValue": "Longer checkbox button option 2 for testing purposes"
             }
         ]
     },

@@ -1,10 +1,6 @@
 <template>
   <nav>
-    <el-menu
-      default-active="$route.path"
-      class="el-menu-vertical"
-      @open="handleOpen"
-      @close="handleClose"
+    <el-menu default-active="$route.path" class="el-menu-vertical" @open="handleOpen" @close="handleClose"
       :router="true">
       <el-submenu index="1">
         <template slot="title">
@@ -40,18 +36,17 @@
 </template>
 
 <script>
-  export default {
-    methods: {
-      handleOpen(key, keyPath) {
-        console.log(key, keyPath);
-      },
-      handleClose(key, keyPath) {
-        console.log(key, keyPath);
-      }
+export default {
+  methods: {
+    handleOpen(key, keyPath) {
+      console.log(key, keyPath);
+    },
+    handleClose(key, keyPath) {
+      console.log(key, keyPath);
     }
   }
+}
 </script>
 
 <style lang="scss">
-
 </style>

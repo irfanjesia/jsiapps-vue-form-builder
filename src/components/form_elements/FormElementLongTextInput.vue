@@ -1,9 +1,6 @@
 <template>
   <div>
-    <el-input
-      type="textarea"
-      :rows="2"
-      :placeholder="currentField.isPlaceholderVisible ? currentField.placeholder : ''"
+    <el-input type="textarea" :rows="2" :placeholder="currentField.isPlaceholderVisible ? currentField.placeholder : ''"
       v-model="textarea">
     </el-input>
   </div>
@@ -11,13 +8,13 @@
 
 
 <script>
-  export default {
-    name: 'LongTextInput',
-    props: ['currentField'],
-    data() {
-    	return {
-    		textarea: ''
-    	}
+export default {
+  name: 'LongTextInput',
+  props: ['currentField'],
+  data() {
+    return {
+      textarea: ''
     }
   }
+}
 </script>
