@@ -22,8 +22,7 @@
                         </small>
                     </div>
                     <a><button type="button" @click="onSubmit" class="el-button form__button el-button--primary"
-                            style="margin-top: 25px"><span>Submit</span></button>
-                    </a>
+                            style="margin-top: 25px"><span>Submit</span></button></a>
                 </div>
             </el-main>
         </el-container>
@@ -97,13 +96,6 @@ export default {
                 }
             });
 
-            // cek is required true or false
-
-            // null handling?
-            if (radios[0].parentElement.classList.contains('is-checked')===false) {
-                console.log('aaaa')
-            }
-            
             // Checkbox type
             let checkboxes = document.querySelectorAll('.el-checkbox__original');
             checkboxes.forEach(checkbox => {

@@ -84,6 +84,24 @@
         ]
     },
     {
+        "fieldType": "RadioButton",
+        "isUnique": false,
+        "label": "Radio2",
+        "isHelpBlockVisible": false,
+        "helpBlockText": "Please input your helpblock here...",
+        "isRequired": true,
+        "options": [
+            {
+                "optionLabel": "Option 3",
+                "optionValue": "Option 3"
+            },
+            {
+                "optionLabel": "Option 4",
+                "optionValue": "Option 4"
+            }
+        ]
+    },
+    {
         "fieldType": "Checkbox",
         "isUnique": false,
         "label": "Checkbox",
@@ -98,6 +116,24 @@
             {
                 "optionLabel": "Option 2",
                 "optionValue": "Option 2"
+            }
+        ]
+    },
+    {
+        "fieldType": "Checkbox",
+        "isUnique": false,
+        "label": "Checkbox2",
+        "isHelpBlockVisible": false,
+        "helpBlockText": "Please input your helpblock here...",
+        "isRequired": false,
+        "options": [
+            {
+                "optionLabel": "Option 3",
+                "optionValue": "Option 3"
+            },
+            {
+                "optionLabel": "Option 4",
+                "optionValue": "Option 4"
             }
         ]
     },
