@@ -19,9 +19,8 @@
               {{ form.helpBlockText }}
             </small>
           </div>
-          <a href="/preview"><button type="button" class="el-button form__button el-button--primary"
-              style="margin-top: 25px"><span>Submit</span></button>
-          </a>
+          <button type="button" class="el-button form__button el-button--primary"
+            style="margin-top: 25px"><span>Submit</span></button>
         </div>
       </el-main>
     </el-container>

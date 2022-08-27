@@ -43,15 +43,9 @@
             </div>
           </draggable>
         </div>
-
-        <div class="wrapper--snippet">
-          <pre
-            style="margin-bottom: -30px;">Form Header: { "title": "{{ forms.title }}", "desc": "{{ forms.desc }}" }</pre>
-          <pre>Form Data: {{ forms }}</pre>
-        </div>
       </el-main>
 
-      <el-aside class="wrapper--sidebar" width="450px">
+      <el-aside class="wrapper--sidebar" width="470px">
         <el-tabs type="border-card" v-model="activeTabForFields">
           <el-tab-pane name="elements" label="Elements">
             <elements />
@@ -61,6 +55,12 @@
             <properties v-show="Object.keys($store.activeForm).length > 0"></properties>
           </el-tab-pane>
         </el-tabs>
+
+        <div class="wrapper--snippet">
+          <pre
+            style="margin-bottom: -30px;">Form Header: { "title": "{{ forms.title }}", "desc": "{{ forms.desc }}" }</pre>
+          <pre>Form Data: {{ forms }}</pre>
+        </div>
       </el-aside>
     </el-container>
   </div>

@@ -6,7 +6,7 @@
         "placeholder": "Input your text here...",
         "label": "Text 1",
         "isHelpBlockVisible": false,
-        "helpBlockText": "Please input your helpblock here...",
+        "helpBlockText": "Input your helpblock here...",
         "isRequired": false
     },
     {
@@ -16,7 +16,7 @@
         "placeholder": "Input your text here...",
         "label": "Text 2",
         "isHelpBlockVisible": false,
-        "helpBlockText": "Please input your helpblock here...",
+        "helpBlockText": "Input your helpblock here...",
         "isRequired": false
     },
     {
@@ -26,7 +26,7 @@
         "placeholder": "Input your text here...",
         "label": "Long Text 1",
         "isHelpBlockVisible": false,
-        "helpBlockText": "Please input your helpblock here...",
+        "helpBlockText": "Input your helpblock here...",
         "isRequired": false
     },
     {
@@ -36,7 +36,7 @@
         "placeholder": "Input your text here...",
         "label": "Long Text 2",
         "isHelpBlockVisible": false,
-        "helpBlockText": "Please input your helpblock here...",
+        "helpBlockText": "Input your helpblock here...",
         "isRequired": false
     },
     {
@@ -44,7 +44,7 @@
         "isUnique": false,
         "label": "Number",
         "isHelpBlockVisible": false,
-        "helpBlockText": "Please input your helpblock here...",
+        "helpBlockText": "Input your helpblock here...",
         "isRequired": false
     },
     {
@@ -52,7 +52,7 @@
         "isUnique": false,
         "label": "Select",
         "isHelpBlockVisible": false,
-        "helpBlockText": "Please input your helpblock here...",
+        "helpBlockText": "Input your helpblock here...",
         "isRequired": false,
         "options": [
             {
@@ -62,6 +62,14 @@
             {
                 "optionLabel": "Option 2",
                 "optionValue": "Option 2"
+            },
+            {
+                "optionLabel": "Option 3",
+                "optionValue": "Option 3"
+            },
+            {
+                "optionLabel": "Option 4",
+                "optionValue": "Option 4"
             }
         ]
     },
@@ -70,44 +78,8 @@
         "isUnique": false,
         "label": "Radio",
         "isHelpBlockVisible": false,
-        "helpBlockText": "Please input your helpblock here...",
+        "helpBlockText": "Input your helpblock here...",
         "isRequired": true,
-        "options": [
-            {
-                "optionLabel": "Option 1",
-                "optionValue": "Option 1"
-            },
-            {
-                "optionLabel": "Option 2",
-                "optionValue": "Option 2"
-            }
-        ]
-    },
-    {
-        "fieldType": "RadioButton",
-        "isUnique": false,
-        "label": "Radio2",
-        "isHelpBlockVisible": false,
-        "helpBlockText": "Please input your helpblock here...",
-        "isRequired": true,
-        "options": [
-            {
-                "optionLabel": "Option 3",
-                "optionValue": "Option 3"
-            },
-            {
-                "optionLabel": "Option 4",
-                "optionValue": "Option 4"
-            }
-        ]
-    },
-    {
-        "fieldType": "Checkbox",
-        "isUnique": false,
-        "label": "Checkbox",
-        "isHelpBlockVisible": false,
-        "helpBlockText": "Please input your helpblock here...",
-        "isRequired": false,
         "options": [
             {
                 "optionLabel": "Option 1",
@@ -122,18 +94,18 @@
     {
         "fieldType": "Checkbox",
         "isUnique": false,
-        "label": "Checkbox2",
+        "label": "Checkbox",
         "isHelpBlockVisible": false,
-        "helpBlockText": "Please input your helpblock here...",
+        "helpBlockText": "Input your helpblock here...",
         "isRequired": false,
         "options": [
             {
-                "optionLabel": "Option 3",
-                "optionValue": "Option 3"
+                "optionLabel": "Option 1",
+                "optionValue": "Option 1"
             },
             {
-                "optionLabel": "Option 4",
-                "optionValue": "Option 4"
+                "optionLabel": "Option 2",
+                "optionValue": "Option 2"
             }
         ]
     },
@@ -142,7 +114,7 @@
         "isUnique": false,
         "label": "Time Picker",
         "isHelpBlockVisible": false,
-        "helpBlockText": "Please input your helpblock here...",
+        "helpBlockText": "Input your helpblock here...",
         "isRequired": false
     },
     {
@@ -150,7 +122,7 @@
         "isUnique": false,
         "label": "Date Picker",
         "isHelpBlockVisible": false,
-        "helpBlockText": "Please input your helpblock here...",
+        "helpBlockText": "Input your helpblock here...",
         "isRequired": false
     }
 ]

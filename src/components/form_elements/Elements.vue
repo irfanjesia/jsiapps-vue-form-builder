@@ -51,7 +51,7 @@
         if (field.group == "form"){
           newField ["label"] = "Enter your field label";
           newField ["isHelpBlockVisible"] =  false;
-          newField ["helpBlockText"] = 'Please input your helpblock here...';
+          newField ["helpBlockText"] = 'Input your helpblock here...';
           newField ["isRequired"] = false;
         }
 
