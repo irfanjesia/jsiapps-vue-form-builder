@@ -62,6 +62,10 @@
           <pre>Form Data: {{ forms }}</pre>
         </div>
       </el-aside>
+      <div style="position: fixed; right: 87.5%; top: 87.5%; z-index: 2">
+        <a><button type="button" @click="onSubmit" class="el-button form__button el-button--primary"><span>Create
+              Form</span></button></a>
+      </div>
     </el-container>
   </div>
 </template>
@@ -78,7 +82,6 @@ export default {
       sortElementOptions: FormBuilder.$data.sortElementOptions
     };
   },
-
   computed: {
     cssProps() {
       // Return an object that will generate css properties key 
@@ -108,27 +111,21 @@ export default {
       return result;
     }
   },
-
-  mounted() {
-    console.log("form header ->", "{", '"title":', JSON.stringify(this.forms.title), ",", '"desc":', JSON.stringify(this.forms.desc), "}")
-    console.log("form data ->", JSON.stringify(this.forms))
-    // console.log("form ->", this.forms)
-    // console.log("activeform ->", this.activeForm)
-  },
-
   components: FormBuilder.$options.components,
-
   methods: {
     deleteElement(index) {
       FormBuilder.deleteElement(index)
     },
-
     cloneElement(index, form) {
       FormBuilder.cloneElement(index, form)
     },
-
     editElementProperties(form) {
       FormBuilder.editElementProperties(form)
+    },
+    onSubmit() {
+      let header = [{title: this.forms.title,  desc: this.forms.desc}]
+      console.log("form header ->", JSON.stringify(header))
+      console.log("form data ->", JSON.stringify(this.forms))
     }
   }
 }

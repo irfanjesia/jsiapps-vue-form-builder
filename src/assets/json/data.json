@@ -8,6 +8,15 @@
         "isHelpBlockVisible": false,
         "helpBlockText": "Input your helpblock here...",
         "isRequired": false
+    },{
+        "fieldType": "TextInput",
+        "isUnique": false,
+        "isPlaceholderVisible": false,
+        "placeholder": "Input your text here...",
+        "label": "Text 2",
+        "isHelpBlockVisible": false,
+        "helpBlockText": "Input your helpblock here...",
+        "isRequired": false
     },
     {
         "fieldType": "LongTextInput",

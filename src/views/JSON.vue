@@ -76,23 +76,27 @@ export default {
             let inputs = document.querySelectorAll('.el-input__inner');
             inputs.forEach(input => {
                 if (input.parentElement.parentElement.parentElement.innerText) {
-                    console.log("{", JSON.stringify(input.parentElement.parentElement.parentElement.innerText), ': ', JSON.stringify(input.value), "}")
+                    let inputValues = { [input.parentElement.parentElement.parentElement.innerText]: input.value }
+                    console.log(JSON.stringify(inputValues))
                 } else {
-                    console.log("{", JSON.stringify(input.parentElement.parentElement.parentElement.parentElement.innerText), ': ', JSON.stringify(input.value), "}")
+                    let inputValues = { [input.parentElement.parentElement.parentElement.parentElement.innerText]: input.value }
+                    console.log(JSON.stringify(inputValues))
                 }
             });
 
             // Textarea type
             let textAreas = document.querySelectorAll('.el-textarea__inner');
             textAreas.forEach(textArea => {
-                console.log("{", JSON.stringify(textArea.parentElement.parentElement.parentElement.innerText), ': ', JSON.stringify(textArea.value), "}")
+                let textAreaValues = { [textArea.parentElement.parentElement.parentElement.innerText]: textArea.value }
+                console.log(JSON.stringify(textAreaValues))
             });
 
             // Radio type
             let radios = document.querySelectorAll('.el-radio__original');
             radios.forEach(radio => {
                 if (radio.parentElement.classList.contains('is-checked')) {
-                    console.log("{", JSON.stringify(radio.parentElement.parentElement.parentElement.parentElement.innerText.split("\n")[0]), ': ', JSON.stringify(radio.value), "}")
+                    let radioValues = { [radio.parentElement.parentElement.parentElement.parentElement.innerText.split("\n")[0]]: radio.value }
+                    console.log(JSON.stringify(radioValues))
                 }
             });
 
@@ -100,7 +104,8 @@ export default {
             let checkboxes = document.querySelectorAll('.el-checkbox__original');
             checkboxes.forEach(checkbox => {
                 if (checkbox.parentElement.classList.contains('is-checked')) {
-                    console.log("{", JSON.stringify(checkbox.parentElement.parentElement.parentElement.parentElement.parentElement.innerText.split("\n")[0]), ': ', JSON.stringify(checkbox.value), "}")
+                    let checkboxValues = { [checkbox.parentElement.parentElement.parentElement.parentElement.parentElement.innerText.split("\n")[0]]: checkbox.value }
+                    console.log(JSON.stringify(checkboxValues))
                 }
             });
         }
