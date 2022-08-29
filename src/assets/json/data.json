@@ -5,16 +5,7 @@
         "isPlaceholderVisible": false,
         "placeholder": "Input your text here...",
         "label": "Text",
-        "isHelpBlockVisible": false,
-        "helpBlockText": "Input your helpblock here...",
-        "isRequired": false
-    },{
-        "fieldType": "TextInput",
-        "isUnique": false,
-        "isPlaceholderVisible": false,
-        "placeholder": "Input your text here...",
-        "label": "Text 2",
-        "isHelpBlockVisible": false,
+        "isHelpBlockVisible": true,
         "helpBlockText": "Input your helpblock here...",
         "isRequired": false
     },
@@ -24,25 +15,25 @@
         "isPlaceholderVisible": false,
         "placeholder": "Input your text here...",
         "label": "Long Text",
-        "isHelpBlockVisible": false,
+        "isHelpBlockVisible": true,
         "helpBlockText": "Input your helpblock here...",
-        "isRequired": false
+        "isRequired": true
     },
     {
         "fieldType": "NumberInput",
         "isUnique": false,
         "label": "Number",
-        "isHelpBlockVisible": false,
+        "isHelpBlockVisible": true,
         "helpBlockText": "Input your helpblock here...",
-        "isRequired": false
+        "isRequired": true
     },
     {
         "fieldType": "SelectList",
         "isUnique": false,
         "label": "Select",
-        "isHelpBlockVisible": false,
+        "isHelpBlockVisible": true,
         "helpBlockText": "Input your helpblock here...",
-        "isRequired": false,
+        "isRequired": true,
         "options": [
             {
                 "optionLabel": "Option 1",
@@ -66,7 +57,7 @@
         "fieldType": "RadioButton",
         "isUnique": false,
         "label": "Radio",
-        "isHelpBlockVisible": false,
+        "isHelpBlockVisible": true,
         "helpBlockText": "Input your helpblock here...",
         "isRequired": true,
         "options": [
@@ -98,7 +89,7 @@
         "label": "Radio 2",
         "isHelpBlockVisible": false,
         "helpBlockText": "Input your helpblock here...",
-        "isRequired": true,
+        "isRequired": false,
         "options": [
             {
                 "optionLabel": "Longer radio button option 1 for testing purposes",
@@ -116,7 +107,7 @@
         "label": "Checkbox",
         "isHelpBlockVisible": false,
         "helpBlockText": "Input your helpblock here...",
-        "isRequired": false,
+        "isRequired": true,
         "options": [
             {
                 "optionLabel": "Checkbox button option 1",
@@ -140,9 +131,9 @@
         "fieldType": "Checkbox",
         "isUnique": false,
         "label": "Checkbox 2",
-        "isHelpBlockVisible": false,
+        "isHelpBlockVisible": true,
         "helpBlockText": "Input your helpblock here...",
-        "isRequired": false,
+        "isRequired": true,
         "options": [
             {
                 "optionLabel": "Longer checkbox button option 1 for testing purposes",
@@ -158,16 +149,16 @@
         "fieldType": "TimePicker",
         "isUnique": false,
         "label": "Time Picker",
-        "isHelpBlockVisible": false,
+        "isHelpBlockVisible": true,
         "helpBlockText": "Input your helpblock here...",
-        "isRequired": false
+        "isRequired": true
     },
     {
         "fieldType": "DatePicker",
         "isUnique": false,
         "label": "Date Picker",
-        "isHelpBlockVisible": false,
+        "isHelpBlockVisible": true,
         "helpBlockText": "Input your helpblock here...",
-        "isRequired": false
+        "isRequired": true
     }
 ]

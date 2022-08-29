@@ -84,12 +84,10 @@ export default {
   },
   computed: {
     cssProps() {
-      // Return an object that will generate css properties key 
-      // to match with the themingVars
-      // 
+      // Return an object that will generate css properties key to match with the themingVars
       // Example output: { '--theme-primary-color': this.themingVars.primaryColor }
       var result = {},
-        themingVars = this.themingVars;
+        themingVars = this.themingVars
 
       for (var v in themingVars) {
         if (themingVars.hasOwnProperty(v)) {
@@ -101,13 +99,11 @@ export default {
           else if (_.includes(newV, 'margin')) suffix = "px"
           else if (_.includes(newV, 'radius')) suffix = "px"
 
-          result[newV] = themingVars[v] + suffix;
+          result[newV] = themingVars[v] + suffix
         }
       }
-
       console.log("result", result)
       console.log("result JSON", JSON.stringify(result))
-
       return result;
     }
   },
@@ -123,7 +119,7 @@ export default {
       FormBuilder.editElementProperties(form)
     },
     onSubmit() {
-      let header = [{title: this.forms.title,  desc: this.forms.desc}]
+      let header = {title: this.forms.title,  desc: this.forms.desc}
       console.log("form header ->", JSON.stringify(header))
       console.log("form data ->", JSON.stringify(this.forms))
     }

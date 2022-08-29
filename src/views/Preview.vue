@@ -5,8 +5,8 @@
         <div class="wrapper--forms preview__wrapper">
           <h1 v-if="!forms.title">Form Title</h1>
           <h1>{{ forms.title }}</h1>
-          <p style="margin-top: 25px; margin-bottom: 20px" v-if="!forms.desc">Form Description</p>
-          <p style="margin-top: 25px; margin-bottom: 20px">{{ forms.desc }}</p>
+          <p class="header-p" v-if="!forms.desc">Form Description</p>
+          <p class="header-p">{{ forms.desc }}</p>
           <hr>
           <div v-for="(form, index) in forms" :key="index" v-bind="form" class="form__group" style="margin-top: 25px;">
             <label class="form__label" v-model="form.label" v-show="form.hasOwnProperty('label')">{{ form.label
@@ -36,9 +36,7 @@ export default {
   components: FormBuilder.$options.components,
   computed: {
     cssProps() {
-      // Return an object that will generate css properties key 
-      // to match with the themingVars
-      // 
+      // Return an object that will generate css properties key to match with the themingVars
       // Example output: { '--theme-primary-color': this.themingVars.primaryColor }
       var result = {},
         themingVars = this.themingVars;
@@ -56,7 +54,6 @@ export default {
           result[newV] = themingVars[v] + suffix;
         }
       }
-
       return result;
     }
   }
