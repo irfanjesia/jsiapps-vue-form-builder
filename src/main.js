@@ -58,6 +58,6 @@ var vm = new Vue({
   data: { store },
   template: '<App/>',
   render: h => h(App)
-}).$mount('#app')
+}).$mount(this.el)
 
 global.vm = vm;
