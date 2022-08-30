@@ -40,7 +40,8 @@ export default {
         return {
             json: json,
             header: header,
-            validation: []
+            validation: [],
+            radioCheck: []
         }
     },
     store: ['themingVars'],
@@ -131,6 +132,7 @@ export default {
     },
     methods: {
         onSubmit() {
+            // Validation array
             this.validation = []
 
             // Input type
@@ -138,14 +140,16 @@ export default {
             inputs.forEach(input => {
                 if (input.parentElement.parentElement.parentElement.innerText) {
                     if (!input.value && input.parentElement.parentElement.parentElement.hasAttribute('isRequired')) {
-                        console.log(input.parentElement.parentElement.parentElement.hasAttribute('isRequired'))
+                        // Return validation true if there is no value in required field
+                        // console.log(input.parentElement.parentElement.parentElement.hasAttribute('isRequired'))
                         this.validation.input = true
                     }
                     let inputValues = { [input.parentElement.parentElement.parentElement.innerText.split("\n")[0]]: input.value }
                     console.log(JSON.stringify(inputValues))
                 } else {
                     if (!input.value && input.parentElement.parentElement.parentElement.parentElement.hasAttribute('isRequired')) {
-                        console.log(input.parentElement.parentElement.parentElement.parentElement.hasAttribute('isRequired'))
+                        // Return validation true if there is no value in required field
+                        // console.log(input.parentElement.parentElement.parentElement.parentElement.hasAttribute('isRequired'))
                         this.validation.input = true
                     }
                     let inputValues = { [input.parentElement.parentElement.parentElement.parentElement.innerText.split("\n")[0]]: input.value }
@@ -157,7 +161,8 @@ export default {
             const textAreas = document.querySelectorAll('.el-textarea__inner')
             textAreas.forEach(textArea => {
                 if (!textArea.value && textArea.parentElement.parentElement.parentElement.hasAttribute('isRequired')) {
-                    console.log(textArea.parentElement.parentElement.parentElement.hasAttribute('isRequired'))
+                    // Return validation true if there is no value in required field
+                    // console.log(textArea.parentElement.parentElement.parentElement.hasAttribute('isRequired'))
                     this.validation.textArea = true
                 }
                 let textAreaValues = { [textArea.parentElement.parentElement.parentElement.innerText.split("\n")[0]]: textArea.value }
@@ -166,39 +171,40 @@ export default {
 
             // Radio type
             const radios = document.querySelectorAll('.el-radio__original')
+            this.validation.radio = true // Set validation true for no initial value
             radios.forEach(radio => {
-                if (radio.parentElement.parentElement.parentElement.parentElement.hasAttribute('isRequired')) {
-                    // check is required first
-                }
-                if (radio.parentElement.classList.contains('is-checked')) {
+                if (radio.closest('.is-checked') && (radio.parentElement.parentElement.parentElement.parentElement.hasAttribute('isRequired'))) {
                     let radioValues = { [radio.parentElement.parentElement.parentElement.parentElement.innerText.split("\n")[0]]: radio.value }
                     console.log(JSON.stringify(radioValues))
-                    console.log(radio.parentElement.classList)
-                } else if (!radio.parentElement.classList.contains('is-checked')) {
-                    // console.log(radio.parentElement.classList)
-                    this.validation.radio = true
+                    // Return validation false if there is a value in required field
+                    this.validation.radio = false
+                }
+                else if (radio.closest('.is-checked')) {
+                    let radioValues = { [radio.parentElement.parentElement.parentElement.parentElement.innerText.split("\n")[0]]: radio.value }
+                    console.log(JSON.stringify(radioValues))
                 }
             })
 
             // Checkbox type
             const checkboxes = document.querySelectorAll('.el-checkbox__original')
+            this.validation.checkbox = true // Set validation true for no initial value
             checkboxes.forEach(checkbox => {
-                if (checkbox.parentElement.parentElement.parentElement.parentElement.parentElement.hasAttribute('isRequired')) {
-                    // check is required first
-                }
-                if (checkbox.parentElement.classList.contains('is-checked')) {
+                if (checkbox.closest('.is-checked') && (checkbox.parentElement.parentElement.parentElement.parentElement.parentElement.hasAttribute('isRequired'))) {
                     let checkboxValues = { [checkbox.parentElement.parentElement.parentElement.parentElement.parentElement.innerText.split("\n")[0]]: checkbox.value }
                     console.log(JSON.stringify(checkboxValues))
-                    console.log(checkbox.parentElement.classList)
-                } else if (!checkbox.parentElement.classList.contains('is-checked')) {
-                    // console.log(checkbox.parentElement.classList)
-                    this.validation.checkbox = true
+                    // Return validation false if there is a value in required field
+                    this.validation.checkbox = false
+                }
+                else if (checkbox.closest('.is-checked')) {
+                    let checkboxValues = { [checkbox.parentElement.parentElement.parentElement.parentElement.parentElement.innerText.split("\n")[0]]: checkbox.value }
+                    console.log(JSON.stringify(checkboxValues))
                 }
             })
 
             // Required field validation
             if (this.validation.input || this.validation.textArea || this.validation.radio || this.validation.checkbox) {
-                console.log(this.validation)
+                // If validation field is true then show alert
+                // console.log(this.validation)
                 alert('You must fill the required field')
             }
         }
