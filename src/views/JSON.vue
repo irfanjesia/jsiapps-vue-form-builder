@@ -40,8 +40,7 @@ export default {
         return {
             json: json,
             header: header,
-            validation: [],
-            radioCheck: []
+            validation: []
         }
     },
     store: ['themingVars'],
