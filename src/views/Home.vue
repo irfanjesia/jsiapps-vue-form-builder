@@ -102,8 +102,7 @@ export default {
           result[newV] = themingVars[v] + suffix
         }
       }
-      console.log("result", result)
-      console.log("result JSON", JSON.stringify(result))
+      // console.log("result", result)
       return result;
     }
   },
