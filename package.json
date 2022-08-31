@@ -1,9 +1,7 @@
 {
-  "name": "project",
+  "name": "jsiapps-vue-form-builder",
   "version": "1.0.0",
-  "description": "A Vue.js project",
-  "author": "Jia Meei <jiameei@weblite.com.my>",
-  "private": true,
+  "description": "A Vue.js project for JSIApps Form Builder",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
