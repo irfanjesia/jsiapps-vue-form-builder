@@ -23,9 +23,7 @@
                         </small>
                     </div>
 
-                    <button type="button" @click="onSubmit" class="el-button form__button el-button--primary">
-                        <span>Submit</span>
-                    </button>
+                    <el-button type="primary" @click="onSubmit">Submit</el-button>
                 </div>
             </el-main>
         </el-container>

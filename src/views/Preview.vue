@@ -23,8 +23,7 @@
             </small>
           </div>
 
-          <button type="button" class="el-button form__button el-button--primary"
-            style="margin-top: 25px"><span>Submit</span></button>
+          <el-button type="primary" style="mt-25">Submit</el-button>
         </div>
       </el-main>
     </el-container>
@@ -135,3 +134,10 @@ export default {
   }
 }
 </script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="scss" scoped>
+.mt-25 {
+  margin-top: 25px;
+}
+</style>
