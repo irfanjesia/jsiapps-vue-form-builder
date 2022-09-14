@@ -23,7 +23,7 @@
             </small>
           </div>
 
-          <el-button type="primary" style="mt-25">Submit</el-button>
+          <el-button type="primary" class="mt-25">Submit</el-button>
         </div>
       </el-main>
     </el-container>
