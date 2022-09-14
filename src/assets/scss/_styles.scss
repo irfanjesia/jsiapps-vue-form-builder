@@ -217,6 +217,10 @@ textarea {
 		.el-tabs__item {
 			width: 51%;
 			text-align: center;
+
+			&:hover {
+				color: #516167 !important;
+			}
 		}
 	}
 
@@ -229,7 +233,7 @@ textarea {
 		}
 
 		>.el-tabs__header {
-			background: #d6d9dc;
+			background: darken(#f9f9f9, 10);
 		}
 	}
 

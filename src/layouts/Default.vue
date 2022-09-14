@@ -1,10 +1,12 @@
 <template>
 	<el-container>
-		<el-header>
+		<el-header v-if="this.$route.name != 'login' && this.$route.name != 'form'">
 			<el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" :router="true">
 				<el-menu-item index="/">Design</el-menu-item>
 				<el-menu-item index="/preview">Preview</el-menu-item>
-				<el-menu-item index="/test">JSON Test</el-menu-item>
+				<el-menu-item class="dock-right">
+					<el-button type="danger" @click.prevent="logout" plain>Logout</el-button>
+				</el-menu-item>
 			</el-menu>
 		</el-header>
 
@@ -20,15 +22,23 @@
 export default {
 	data() {
 		return {
-			activeIndex: '/'
+			activeIndex: '/',
+			login: localStorage.getItem('login')
 		};
+	},
+	methods: {
+		logout() {
+			localStorage.removeItem("login")
+			this.$message.success("Logout successful")
+			return this.$router.push({ name: 'login' })
+		}
 	}
 }
 </script>
 
 <style lang="scss" scoped>
-.el-aside {
-	overflow-x: hidden;
+.dock-right {
+	float: right;
 }
 </style>
 <!-- https://itnext.io/anyway-heres-how-to-create-a-multiple-layout-system-with-vue-and-vue-router-b379baa91a05 -->

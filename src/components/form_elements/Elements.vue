@@ -48,10 +48,6 @@ export default {
         newField["isRequired"] = false;
       }
 
-      if (field.name == "TextEditor") {
-        newField["fieldText"] = "Start typing...";
-      }
-
       // Add dummy options for loading the radio/checkbox
       if (field.hasOptions) {
         newField["options"] = [
@@ -95,13 +91,17 @@ export default {
 .wrapper--forms .sortable__ghost {
   position: relative;
   width: 100%;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #409EFF;
   margin-top: 2px;
   margin-bottom: 2px;
 
+  [type="button"] {
+    display: none;
+  }
+
   &:before {
     content: "Drag it here";
-    background-color: black;
+    background-color: #409EFF;
     color: white;
     position: absolute;
     left: 50%;

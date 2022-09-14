@@ -3,14 +3,17 @@
     <el-container>
       <el-main :style="cssProps">
         <div class="wrapper--forms preview__wrapper">
+          <!-- Form Header -->
           <h1 v-if="!forms.title">Form Title</h1>
           <h1>{{ forms.title }}</h1>
           <p class="header-p" v-if="!forms.desc">Form Description</p>
           <p class="header-p">{{ forms.desc }}</p>
-          <hr>
+          <el-divider />
+
           <div v-for="(form, index) in forms" :key="index" v-bind="form" class="form__group" style="margin-top: 25px;">
-            <label class="form__label" v-model="form.label" v-show="form.hasOwnProperty('label')">{{ form.label
-            }}</label>
+            <label class="form__label" v-model="form.label" v-show="form.hasOwnProperty('label')">
+              {{ form.label }}
+            </label>
 
             <component :is="form.fieldType" :currentField="form" class="form__field">
             </component>
@@ -19,6 +22,7 @@
               {{ form.helpBlockText }}
             </small>
           </div>
+
           <button type="button" class="el-button form__button el-button--primary"
             style="margin-top: 25px"><span>Submit</span></button>
         </div>
@@ -34,6 +38,78 @@ export default {
   name: 'Publish',
   store: ['forms', 'themingVars'],
   components: FormBuilder.$options.components,
+  data() {
+    return {
+      login: localStorage.getItem('login')
+    };
+  },
+  mounted() {
+    // Login validation
+    if (!this.login) {
+      this.$message.error("Not authenticated!")
+      return this.$router.push({ name: 'login' })
+    }
+
+    // Input type
+    const inputs = document.querySelectorAll('.el-input__inner')
+    inputs.forEach(input => {
+      if (input.parentElement.parentElement.parentElement.innerText) {
+        if (input.parentElement.parentElement.parentElement.hasAttribute('isRequired')) {
+          var tag = document.createElement('p')
+          var text = document.createTextNode('*Required field')
+          tag.appendChild(text)
+          tag.setAttribute('class', 'required-tag')
+          input.parentElement.parentElement.parentElement.appendChild(tag)
+        }
+      } else {
+        if (input.parentElement.parentElement.parentElement.parentElement.hasAttribute('isRequired')) {
+          var tag = document.createElement('p')
+          var text = document.createTextNode('*Required field')
+          tag.appendChild(text)
+          tag.setAttribute('class', 'required-tag')
+          input.parentElement.parentElement.parentElement.parentElement.appendChild(tag)
+        }
+      }
+    })
+
+    // Textarea type
+    const textAreas = document.querySelectorAll('.el-textarea__inner')
+    textAreas.forEach(textArea => {
+      if (textArea.parentElement.parentElement.parentElement.hasAttribute('isRequired')) {
+        var tag = document.createElement('p')
+        var text = document.createTextNode('*Required field')
+        tag.appendChild(text)
+        tag.setAttribute('class', 'required-tag')
+        textArea.parentElement.parentElement.parentElement.appendChild(tag)
+      }
+    })
+
+    // Radio type
+    const radioCheck = document.querySelector('.el-radio__original')
+    const radios = document.querySelectorAll('.form__group[fieldType="RadioButton"]')
+    radios.forEach(radio => {
+      if (radio.hasAttribute('isRequired') && !radioCheck.parentElement.classList.contains('is-checked')) {
+        var tag = document.createElement('p')
+        var text = document.createTextNode('*Required field')
+        tag.appendChild(text)
+        tag.setAttribute('class', 'required-tag')
+        radio.appendChild(tag)
+      }
+    })
+
+    // Checkbox type
+    const checkboxCheck = document.querySelector('.el-checkbox__original')
+    const checkboxes = document.querySelectorAll('.form__group[fieldType="Checkbox"]')
+    checkboxes.forEach(checkbox => {
+      if (checkbox.hasAttribute('isRequired') && !checkboxCheck.parentElement.classList.contains('is-checked')) {
+        var tag = document.createElement('p')
+        var text = document.createTextNode('*Required field')
+        tag.appendChild(text)
+        tag.setAttribute('class', 'required-tag')
+        checkbox.appendChild(tag)
+      }
+    })
+  },
   computed: {
     cssProps() {
       // Return an object that will generate css properties key to match with the themingVars

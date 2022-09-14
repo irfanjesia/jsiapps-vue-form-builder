@@ -1,7 +1,6 @@
 <template>
   <div>
-    <el-input-number v-model="number" :min="0" :max="100">
-    </el-input-number>
+    <el-input-number v-model="number" :min="0" :max="100"></el-input-number>
   </div>
 </template>
 

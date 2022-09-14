@@ -15,7 +15,7 @@
         "isPlaceholderVisible": false,
         "placeholder": "Input your text here...",
         "label": "Long Text",
-        "isHelpBlockVisible": true,
+        "isHelpBlockVisible": false,
         "helpBlockText": "Input your helpblock here...",
         "isRequired": true
     },
@@ -89,7 +89,7 @@
         "label": "Radio 2",
         "isHelpBlockVisible": false,
         "helpBlockText": "Input your helpblock here...",
-        "isRequired": false,
+        "isRequired": true,
         "options": [
             {
                 "optionLabel": "Longer radio button option 1 for testing purposes",
@@ -107,7 +107,7 @@
         "label": "Checkbox",
         "isHelpBlockVisible": false,
         "helpBlockText": "Input your helpblock here...",
-        "isRequired": false,
+        "isRequired": true,
         "options": [
             {
                 "optionLabel": "Checkbox button option 1",
@@ -157,7 +157,7 @@
         "fieldType": "DatePicker",
         "isUnique": false,
         "label": "Date Picker",
-        "isHelpBlockVisible": true,
+        "isHelpBlockVisible": false,
         "helpBlockText": "Input your helpblock here...",
         "isRequired": true
     }

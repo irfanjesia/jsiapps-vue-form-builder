@@ -3,12 +3,16 @@
     <el-container>
       <el-main :style="cssProps">
         <div class="wrapper--forms">
-          <label>Form Title</label>
-          <input class="header__input" type="text" v-model="forms.title">
-          <label>Form Description</label>
-          <input class="header__input" type="textarea" v-model="forms.desc">
-          <div v-if="forms.length == 0">
-            <p style="text-align: center; margin-bottom: 20px;">Drag an element to get started</p>
+          <!-- Form Header -->
+          <div class="form__header">
+            <label>Form Title</label>
+            <el-input v-model="forms.title" class="header__input" placeholder="Add form title..." />
+            <label>Form Description</label>
+            <el-input v-model="forms.desc" :rows="2" type="textarea" class="header__input"
+              placeholder="Add form description..." />
+            <div v-if="forms.length == 0">
+              <p class="empty-p">Drag an element to get started</p>
+            </div>
           </div>
 
           <draggable :list="forms" class="dragArea" :options="sortElementOptions">
@@ -18,26 +22,27 @@
               <span class="form__selectedlabel">{{ form.fieldType }}</span>
 
               <div @click="editElementProperties(form)">
-                <label class="form__label" v-model="form.label" v-show="form.hasOwnProperty('label')">{{ form.label
-                }}</label>
+                <label class="form__label" v-model="form.label" v-show="form.hasOwnProperty('label')">
+                  {{ form.label }}
+                </label>
 
                 <component :is="form.fieldType" :currentField="form" class="form__field">
                 </component>
 
-                <small class="form__helpblock" v-model="form.helpBlockText" v-show="form.isHelpBlockVisible">{{
-                    form.helpBlockText
-                }} </small>
+                <small class="form__helpblock" v-model="form.helpBlockText" v-show="form.isHelpBlockVisible">
+                  {{ form.helpBlockText }}
+                </small>
               </div>
 
               <!-- Actions list -->
               <div class="form__actiongroup">
-                <el-button circle size="mini" type="primary" icon="el-icon-rank" class="form__actionitem--move">
+                <el-button circle size="mini" type="info" icon="el-icon-rank" class="form__actionitem--move">
                 </el-button>
 
                 <el-button-group class="form__actionlist">
-                  <el-button size="mini" type="primary" icon="el-icon-plus" @click="cloneElement(index, form)"
+                  <el-button size="mini" type="info" icon="el-icon-plus" @click="cloneElement(index, form)"
                     v-show="!form.isUnique"></el-button>
-                  <el-button size="mini" type="primary" icon="el-icon-delete" @click="deleteElement(index)"></el-button>
+                  <el-button size="mini" type="info" icon="el-icon-delete" @click="deleteElement(index)"></el-button>
                 </el-button-group>
               </div>
             </div>
@@ -62,9 +67,9 @@
           <pre>Form Data: {{ forms }}</pre>
         </div>
       </el-aside>
-      <div style="position: fixed; right: 87.5%; top: 87.5%; z-index: 2">
-        <a><button type="button" @click="onSubmit" class="el-button form__button el-button--primary"><span>Create
-              Form</span></button></a>
+
+      <div class="submit-btn">
+        <el-button type="primary" @click="onSubmit">Create Form</el-button>
       </div>
     </el-container>
   </div>
@@ -79,6 +84,7 @@ export default {
 
   data() {
     return {
+      login: localStorage.getItem('login'),
       sortElementOptions: FormBuilder.$data.sortElementOptions
     };
   },
@@ -118,9 +124,17 @@ export default {
       FormBuilder.editElementProperties(form)
     },
     onSubmit() {
-      let header = {title: this.forms.title,  desc: this.forms.desc}
+      let header = { title: this.forms.title, desc: this.forms.desc }
+      this.$message.success("Form created, check console for data.")
       console.log("form header ->", JSON.stringify(header))
       console.log("form data ->", JSON.stringify(this.forms))
+    }
+  },
+  mounted() {
+    // Login validation
+    if (!this.login) {
+      this.$message.error("Not authenticated!")
+      return this.$router.push({ name: 'login' })
     }
   }
 }
@@ -141,26 +155,13 @@ export default {
   z-index: 2;
 }
 
-.header__input {
-  border: 1px solid #DCDFE6;
-  height: 40px;
-  width: 100%;
-  line-height: 40px;
-  box-sizing: border-box;
-  color: #606266;
-  display: inline-block;
-  background-color: #fff;
-  padding: 0 15px;
-  border-radius: 4px;
-  margin-top: 10px;
-  margin-bottom: 25px;
-}
-
 .form__selectedlabel {
   display: none;
-  background: lighten(black, 20%);
+  background: #909399;
   padding: 3px 5px;
   color: white;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
   font-size: 10px;
   position: absolute;
   top: -17px;
@@ -173,13 +174,6 @@ export default {
   top: 50%;
   transform: translateY(-50%);
   visibility: hidden;
-
-  &:active,
-  &:focus,
-  &:hover {
-    border-color: lighten(black, 50%);
-    background: lighten(black, 50%);
-  }
 }
 
 .form__actionlist {
@@ -188,17 +182,18 @@ export default {
   visibility: hidden;
   z-index: 3;
   right: 0;
-  box-shadow: 4px 4px 0 0 lighten(black, 80%);
   border-radius: 2px;
 }
 
 .form__group {
   margin-bottom: 25px;
-  border: 2px solid transparent;
+  border: 1.5px solid transparent;
   position: relative;
 
   &:hover {
-    border-color: lighten(black, 80%);
+    padding: 8px;
+    border-radius: 3px;
+    border-color: #D4D7DE;
 
     .form__actionitem--move {
       visibility: visible;
@@ -206,8 +201,10 @@ export default {
   }
 
   &.is--active {
-    border-color: lighten(black, 50%);
-    background: lighten(black, 95%);
+    padding: 8px;
+    border-radius: 3px;
+    border-color: #D4D7DE;
+    background: #f9f9f9;
 
     .form__actionlist {
       visibility: visible;
@@ -217,5 +214,29 @@ export default {
       display: inline-block;
     }
   }
+}
+
+.empty-p {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.submit-btn {
+  position: fixed;
+  right: 87.5%;
+  top: 87.5%;
+  z-index: 2;
+}
+
+.form__header {
+  margin-top: -20px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header__input {
+  margin-top: 10px;
+  margin-bottom: 25px;
 }
 </style>

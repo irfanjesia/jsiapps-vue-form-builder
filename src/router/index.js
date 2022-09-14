@@ -8,9 +8,14 @@ export default new VueRouter ({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'design',
       // meta: { layout: "default" },
-      component: () => import ('@/views/Home'),
+      component: () => import ('@/views/Design'),
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import ('@/views/Login'),
     },
     {
       path: '/preview',
@@ -18,9 +23,9 @@ export default new VueRouter ({
       component: () => import ('@/views/Preview'),
     },
     {
-      path: '/test',
-      name: 'JSON',
-      component: () => import ('@/views/JSON'),
+      path: '/form',
+      name: 'form',
+      component: () => import ('@/views/Form'),
     },
   ],
 });

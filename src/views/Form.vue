@@ -3,26 +3,29 @@
         <el-container>
             <el-main :style="cssProps">
                 <div class="wrapper--forms preview__wrapper">
+                    <!-- Form Header -->
                     <h1 v-if="!header.title">Form Title</h1>
-                    <h1>{{  header.title  }}</h1>
+                    <h1>{{ header.title }}</h1>
                     <p class="header-p" v-if="!header.desc">Form Description</p>
-                    <p class="header-p">{{  header.desc  }}</p>
-                    <hr>
-                    <div v-for="(form, index) in json" :key="index" v-bind="form" class="form__group"
-                        style="margin-top: 25px;">
-                        <label class="form__label" v-model="form.label" v-show="form.hasOwnProperty('label')">{{
-                             form.label 
-                            }}</label>
+                    <p class="header-p">{{ header.desc }}</p>
+                    <el-divider />
+
+                    <div v-for="(form, index) in json" :key="index" v-bind="form" class="form__group mt-25">
+                        <label class="form__label" v-model="form.label" v-show="form.hasOwnProperty('label')">
+                            {{form.label}}
+                        </label>
 
                         <component :is="form.fieldType" :currentField="form" class="form__field">
                         </component>
 
                         <small class="form__helpblock" v-model="form.helpBlockText" v-show="form.isHelpBlockVisible">
-                            {{  form.helpBlockText  }}
+                            {{ form.helpBlockText }}
                         </small>
                     </div>
-                    <a><button type="button" @click="onSubmit" class="el-button form__button el-button--primary"
-                            style="margin-top: 25px"><span>Submit</span></button></a>
+
+                    <button type="button" @click="onSubmit" class="el-button form__button el-button--primary">
+                        <span>Submit</span>
+                    </button>
                 </div>
             </el-main>
         </el-container>
@@ -195,6 +198,7 @@ export default {
                     this.validation.checkbox = false
                 }
                 else if (checkbox.closest('.is-checked')) {
+                    this.validation.checkbox = false
                     let checkboxValues = { [checkbox.parentElement.parentElement.parentElement.parentElement.parentElement.innerText.split("\n")[0]]: checkbox.value }
                     console.log(JSON.stringify(checkboxValues))
                 }
@@ -204,9 +208,16 @@ export default {
             if (this.validation.input || this.validation.textArea || this.validation.radio || this.validation.checkbox) {
                 // If validation field is true then show alert
                 // console.log(this.validation)
-                alert('You must fill the required field')
-            }
+                this.$message.error("You must fill the required field!")
+            } else { this.$message.success("Form submitted, check console for data.") }
         }
     }
 }
 </script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="scss" scoped>
+.mt-25 {
+    margin-top: 25px;
+}
+</style>
