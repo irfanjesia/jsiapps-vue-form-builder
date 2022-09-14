@@ -5,11 +5,12 @@
             <el-form class="login-form" :model="model" :rules="rules" ref="form" @submit.native.prevent="login">
                 <el-form-item prop="username">
                     <label>Username</label>
-                    <el-input v-model="model.username" placeholder="Username"></el-input>
+                    <el-input v-model="model.username" placeholder="Username"><i slot="prefix" class="el-icon-user username"></i>
+                    </el-input>
                 </el-form-item>
                 <el-form-item prop="password">
                     <label>Password</label>
-                    <el-input v-model="model.password" placeholder="Password" type="password"></el-input>
+                    <el-input v-model="model.password" placeholder="Password" type="password"><i slot="prefix" class="el-icon-lock password"></i></el-input>
                 </el-form-item>
                 <el-form-item>
                     <el-button :loading="loading" class="login-button" type="primary" native-type="submit" block>Login
@@ -114,6 +115,10 @@ a {
     width: 340px;
     display: flex;
     justify-content: center;
+}
+
+.username, .password {
+    margin-left: 5px;
 }
 </style>
   
