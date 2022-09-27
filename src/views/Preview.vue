@@ -4,6 +4,12 @@
       <el-main :style="cssProps">
         <div class="wrapper--forms preview__wrapper">
           <!-- Form Header -->
+          <img src="https://apps-jsi.ub.ac.id/jsiapps/public/uploads/2021-11/175d2c1a790beae2006ab0d26f5e964d.png"
+            style="height: 35%; width: 35%; 
+            display: block;
+            margin-top: -80px;
+            margin-left: auto;
+            margin-right: auto;">
           <h1 v-if="!forms.title">Form Title</h1>
           <h1>{{ forms.title }}</h1>
           <p class="header-p" v-if="!forms.desc">Form Description</p>
