@@ -18,7 +18,7 @@
 
                     <div v-for="(form, index) in json" :key="index" v-bind="form" class="form__group mt-25">
                         <label class="form__label" v-model="form.label" v-show="form.hasOwnProperty('label')">
-                            {{form.label}}
+                            {{ form.label }}
                         </label>
 
                         <component :is="form.fieldType" :currentField="form" class="form__field">
@@ -29,7 +29,7 @@
                         </small>
                     </div>
 
-                    <el-button type="primary" @click="onSubmit">Submit</el-button>
+                    <el-button type="primary" class="mt-25" @click="onSubmit">Submit</el-button>
                 </div>
             </el-main>
         </el-container>
@@ -38,79 +38,31 @@
 
 <script>
 import { FormBuilder } from '@/components/form_elements/formbuilder'
-import json from '../assets/json/data.json'
 import header from '../assets/json/header.json'
+import axios from 'axios'
 
 export default {
-    name: 'JSON',
+    name: 'Form',
     data() {
         return {
-            json: json,
+            token: localStorage.getItem('token'),
+            login: localStorage.getItem('login'),
+            json: [],
             header: header,
             validation: []
         }
     },
     store: ['themingVars'],
     components: FormBuilder.$options.components,
-    mounted() {
-        // Input type
-        const inputs = document.querySelectorAll('.el-input__inner')
-        inputs.forEach(input => {
-            if (input.parentElement.parentElement.parentElement.innerText) {
-                if (input.parentElement.parentElement.parentElement.hasAttribute('isRequired')) {
-                    var tag = document.createElement('p')
-                    var text = document.createTextNode('*Required field')
-                    tag.appendChild(text)
-                    tag.setAttribute('class', 'required-tag')
-                    input.parentElement.parentElement.parentElement.appendChild(tag)
-                }
-            } else {
-                if (input.parentElement.parentElement.parentElement.parentElement.hasAttribute('isRequired')) {
-                    var tag = document.createElement('p')
-                    var text = document.createTextNode('*Required field')
-                    tag.appendChild(text)
-                    tag.setAttribute('class', 'required-tag')
-                    input.parentElement.parentElement.parentElement.parentElement.appendChild(tag)
-                }
-            }
-        })
-
-        // Textarea type
-        const textAreas = document.querySelectorAll('.el-textarea__inner')
-        textAreas.forEach(textArea => {
-            if (textArea.parentElement.parentElement.parentElement.hasAttribute('isRequired')) {
-                var tag = document.createElement('p')
-                var text = document.createTextNode('*Required field')
-                tag.appendChild(text)
-                tag.setAttribute('class', 'required-tag')
-                textArea.parentElement.parentElement.parentElement.appendChild(tag)
-            }
-        })
-
-        // Radio type
-        const radioCheck = document.querySelector('.el-radio__original')
-        const radios = document.querySelectorAll('.form__group[fieldType="RadioButton"]')
-        radios.forEach(radio => {
-            if (radio.hasAttribute('isRequired') && !radioCheck.parentElement.classList.contains('is-checked')) {
-                var tag = document.createElement('p')
-                var text = document.createTextNode('*Required field')
-                tag.appendChild(text)
-                tag.setAttribute('class', 'required-tag')
-                radio.appendChild(tag)
-            }
-        })
-
-        // Checkbox type
-        const checkboxCheck = document.querySelector('.el-checkbox__original')
-        const checkboxes = document.querySelectorAll('.form__group[fieldType="Checkbox"]')
-        checkboxes.forEach(checkbox => {
-            if (checkbox.hasAttribute('isRequired') && !checkboxCheck.parentElement.classList.contains('is-checked')) {
-                var tag = document.createElement('p')
-                var text = document.createTextNode('*Required field')
-                tag.appendChild(text)
-                tag.setAttribute('class', 'required-tag')
-                checkbox.appendChild(tag)
-            }
+    created() {
+        axios.get('https://apps-jsi.ub.ac.id/jsiapps/public/api/dsi_form', {
+            headers: { 'Authorization': 'Bearer ' + this.token }, params: { id: this.$route.params.id }
+        }).then(response => {
+            console.log(response)
+            this.json = JSON.parse(response.data.data.json)
+            this.addIsRequired()
+        }).catch(error => {
+            console.log(error)
         })
     },
     computed: {
@@ -137,6 +89,70 @@ export default {
         }
     },
     methods: {
+        async addIsRequired() {
+            await new Promise(resolve => {
+                setTimeout(resolve, 0);
+            });
+            // Input type
+            const inputs = document.querySelectorAll('.el-input__inner')
+            inputs.forEach(input => {
+                if (input.parentElement.parentElement.parentElement.innerText) {
+                    if (input.parentElement.parentElement.parentElement.hasAttribute('isRequired')) {
+                        var tag = document.createElement('p')
+                        var text = document.createTextNode('*Required field')
+                        tag.appendChild(text)
+                        tag.setAttribute('class', 'required-tag')
+                        input.parentElement.parentElement.parentElement.appendChild(tag)
+                    }
+                } else {
+                    if (input.parentElement.parentElement.parentElement.parentElement.hasAttribute('isRequired')) {
+                        var tag = document.createElement('p')
+                        var text = document.createTextNode('*Required field')
+                        tag.appendChild(text)
+                        tag.setAttribute('class', 'required-tag')
+                        input.parentElement.parentElement.parentElement.parentElement.appendChild(tag)
+                    }
+                }
+            })
+
+            // Textarea type
+            const textAreas = document.querySelectorAll('.el-textarea__inner')
+            textAreas.forEach(textArea => {
+                if (textArea.parentElement.parentElement.parentElement.hasAttribute('isRequired')) {
+                    var tag = document.createElement('p')
+                    var text = document.createTextNode('*Required field')
+                    tag.appendChild(text)
+                    tag.setAttribute('class', 'required-tag')
+                    textArea.parentElement.parentElement.parentElement.appendChild(tag)
+                }
+            })
+
+            // Radio type
+            const radioCheck = document.querySelector('.el-radio__original')
+            const radios = document.querySelectorAll('.form__group[fieldType="RadioButton"]')
+            radios.forEach(radio => {
+                if (radio.hasAttribute('isRequired') && !radioCheck.parentElement.classList.contains('is-checked')) {
+                    var tag = document.createElement('p')
+                    var text = document.createTextNode('*Required field')
+                    tag.appendChild(text)
+                    tag.setAttribute('class', 'required-tag')
+                    radio.appendChild(tag)
+                }
+            })
+
+            // Checkbox type
+            const checkboxCheck = document.querySelector('.el-checkbox__original')
+            const checkboxes = document.querySelectorAll('.form__group[fieldType="Checkbox"]')
+            checkboxes.forEach(checkbox => {
+                if (checkbox.hasAttribute('isRequired') && !checkboxCheck.parentElement.classList.contains('is-checked')) {
+                    var tag = document.createElement('p')
+                    var text = document.createTextNode('*Required field')
+                    tag.appendChild(text)
+                    tag.setAttribute('class', 'required-tag')
+                    checkbox.appendChild(tag)
+                }
+            })
+        },
         onSubmit() {
             // Validation array
             this.validation = []
@@ -211,9 +227,16 @@ export default {
             // Required field validation
             if (this.validation.input || this.validation.textArea || this.validation.radio || this.validation.checkbox) {
                 // If validation field is true then show alert
-                // console.log(this.validation)
+                console.log(this.validation)
                 this.$message.error("You must fill the required field!")
             } else { this.$message.success("Form submitted, check console for data.") }
+        }
+    },
+    mounted() {
+        // Login validation
+        if (!this.login) {
+            this.$message.error("Not authenticated!")
+            return this.$router.push({ name: 'login' })
         }
     }
 }

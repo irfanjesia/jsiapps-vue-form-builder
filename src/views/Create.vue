@@ -16,7 +16,7 @@
           </div>
 
           <draggable :list="forms" class="dragArea" :options="sortElementOptions">
-            <div v-for="(form, index) in forms" :key="index" v-bind="form" class="form__group"
+            <div v-for="(form, index) in forms" :key="index" v-bind="form" class="form__group edit"
               :class="{ 'is--active': form === activeForm }">
 
               <span class="form__selectedlabel">{{ form.fieldType }}</span>
@@ -72,18 +72,56 @@
         <el-button type="primary" @click="onSubmit">Create Form</el-button>
       </div>
     </el-container>
+
+    <!-- Preview -->
+    <el-container>
+      <el-main :style="cssProps">
+        <div class="wrapper--forms preview__wrapper">
+          <!-- Form Header -->
+          <img src="https://apps-jsi.ub.ac.id/jsiapps/public/uploads/2021-11/175d2c1a790beae2006ab0d26f5e964d.png"
+            style="height: 35%; width: 35%; 
+            display: block;
+            margin-top: -80px;
+            margin-left: auto;
+            margin-right: auto;">
+          <h1 v-if="!forms.title">Form Title</h1>
+          <h1>{{ forms.title }}</h1>
+          <p class="header-p" v-if="!forms.desc">Form Description</p>
+          <p class="header-p">{{ forms.desc }}</p>
+          <el-divider />
+
+          <div v-for="(form, index) in forms" :key="index" v-bind="form" class="form__group" style="margin-top: 25px;">
+            <label class="form__label" v-model="form.label" v-show="form.hasOwnProperty('label')">
+              {{ form.label }}
+            </label>
+
+            <component :is="form.fieldType" :currentField="form" class="form__field">
+            </component>
+
+            <small class="form__helpblock" v-model="form.helpBlockText" v-show="form.isHelpBlockVisible">
+              {{ form.helpBlockText }}
+            </small>
+          </div>
+
+          <el-button type="primary" class="mt-25" disabled>Submit</el-button>
+        </div>
+      </el-main>
+    </el-container>
   </div>
+
 </template>
 
 <script>
+import axios from 'axios'
 import { FormBuilder } from '@/components/form_elements/formbuilder'
 
 export default {
-  name: 'Home',
+  name: 'Create',
   store: ['forms', 'activeForm', 'activeTabForFields', 'themingVars'],
 
   data() {
     return {
+      token: localStorage.getItem('token'),
       login: localStorage.getItem('login'),
       sortElementOptions: FormBuilder.$data.sortElementOptions
     };
@@ -125,9 +163,28 @@ export default {
     },
     onSubmit() {
       let header = { title: this.forms.title, desc: this.forms.desc }
-      this.$message.success("Form created, check console for data.")
       console.log("form header ->", JSON.stringify(header))
       console.log("form data ->", JSON.stringify(this.forms))
+
+      if (this.forms.length > 0) {
+        axios.post('https://apps-jsi.ub.ac.id/jsiapps/public/api/add_dsi_form', {
+          json: JSON.stringify(this.forms)
+        }, {
+          headers: { 'Authorization': 'Bearer ' + this.token }
+        }).then(res => {
+          console.log(res)
+          if (res.data.api_message) {
+            this.$message.success("Form created")
+            return this.$router.push({ name: 'dashboard' })
+          } else {
+            this.$message.error("Failed to create form")
+          }
+        }).catch(error => {
+          console.log(error)
+        })
+      } else {
+        this.$message.error("Form data empty")
+      }
     }
   },
   mounted() {
@@ -185,11 +242,7 @@ export default {
   border-radius: 2px;
 }
 
-.form__group {
-  margin-bottom: 25px;
-  border: 1.5px solid transparent;
-  position: relative;
-
+.edit {
   &:hover {
     padding: 8px;
     border-radius: 3px;
@@ -197,6 +250,27 @@ export default {
 
     .form__actionitem--move {
       visibility: visible;
+    }
+  }
+}
+
+.form__group {
+  margin-bottom: 25px;
+  border: 1.5px solid transparent;
+  position: relative;
+
+  &.is--active {
+    padding: 8px;
+    border-radius: 3px;
+    border-color: #D4D7DE;
+    background: #f9f9f9;
+
+    .form__actionlist {
+      visibility: visible;
+    }
+
+    .form__selectedlabel {
+      display: inline-block;
     }
   }
 

@@ -8,9 +8,9 @@ export default new VueRouter ({
   routes: [
     {
       path: '/',
-      name: 'design',
+      name: 'dashboard',
       // meta: { layout: "default" },
-      component: () => import ('@/views/Design'),
+      component: () => import ('@/views/Dashboard'),
     },
     {
       path: '/login',
@@ -18,14 +18,19 @@ export default new VueRouter ({
       component: () => import ('@/views/Login'),
     },
     {
-      path: '/preview',
-      name: 'preview',
-      component: () => import ('@/views/Preview'),
+      path: '/create',
+      name: 'create',
+      component: () => import ('@/views/Create'),
     },
     {
-      path: '/form',
+      path: '/form/:id',
       name: 'form',
       component: () => import ('@/views/Form'),
+    },
+    {
+      path: '/edit/:id',
+      name: 'edit',
+      component: () => import ('@/views/Edit'),
     },
   ],
 });

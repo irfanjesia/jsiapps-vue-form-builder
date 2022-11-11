@@ -24,13 +24,16 @@
 </template>
   
 <script>
+import axios from 'axios'
+
 export default {
-    name: "login",
+    name: "Login",
     data() {
         return {
+            token: localStorage.getItem('token'),
             validCredentials: {
-                username: "admin",
-                password: "123456"
+                username: "guest@gmail.com",
+                password: "guest"
             },
             model: {
                 username: "",
@@ -44,7 +47,7 @@ export default {
                 password: [
                     { required: true, message: "Password is required", trigger: "blur" },
                 ]
-            }
+            },
         };
     },
     methods: {
@@ -62,13 +65,34 @@ export default {
             await this.simulateLogin();
             this.loading = false;
             if (this.model.username === this.validCredentials.username && this.model.password === this.validCredentials.password) {
-                localStorage.setItem("login", true)
-                this.$message.success("Login successful")
-                return this.$router.push({ name: 'design' })
+                axios.post('https://apps-jsi.ub.ac.id/jsiapps/public/api/get-token', {
+                    secret: '6ad9e973117f59d8732be82a8238f022',
+                    username: this.model.username,
+                    password: this.model.password
+                }).then(response => {
+                    console.log(response)
+                    if (response.data.api_message) {
+                        localStorage.setItem("login", true)
+                        localStorage.setItem("token", response.data.data.access_token)
+                        this.$message.success("Login successful")
+                        return this.$router.push({ name: 'dashboard' })
+                    } else {
+                        this.$message.error("Login failed")
+                    }
+                }).catch(error => {
+                    console.log(error)
+                })
             } else {
                 this.$message.error("Username or password is invalid")
             }
-        },
+        }
+    },
+    mounted() {
+        // Login validation
+        if (localStorage.getItem('login')) {
+            this.$message.error("You are already logged in")
+            return this.$router.push({ name: 'dashboard' })
+        }
     }
 };
 </script>

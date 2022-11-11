@@ -1,9 +1,9 @@
 <template>
 	<el-container>
-		<el-header v-if="this.$route.name != 'login' && this.$route.name != 'form'">
+		<el-header v-if="this.$route.name != 'login' && this.$route.name != 'form' && this.$route.name != 'edit'">
 			<el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" :router="true">
-				<el-menu-item index="/">Design</el-menu-item>
-				<el-menu-item index="/preview">Preview</el-menu-item>
+				<el-menu-item index="/">Dashboard</el-menu-item>
+				<el-menu-item index="/create">Create</el-menu-item>
 				<el-menu-item class="dock-right">
 					<el-button type="danger" @click.prevent="logout" plain>Logout</el-button>
 				</el-menu-item>
@@ -29,6 +29,7 @@ export default {
 	methods: {
 		logout() {
 			localStorage.removeItem("login")
+			localStorage.removeItem("token")
 			this.$message.success("Logout successful")
 			return this.$router.push({ name: 'login' })
 		}
