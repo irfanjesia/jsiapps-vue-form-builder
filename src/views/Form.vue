@@ -5,15 +5,11 @@
                 <div class="wrapper--forms preview__wrapper">
                     <!-- Form Header -->
                     <img src="https://apps-jsi.ub.ac.id/jsiapps/public/uploads/2021-11/175d2c1a790beae2006ab0d26f5e964d.png"
-                        style="height: 35%; width: 35%; 
-                        display: block;
-                        margin-top: -80px;
-                        margin-left: auto;
-                        margin-right: auto;">
-                    <h1 v-if="!header.title">Form Title</h1>
-                    <h1>{{ header.title }}</h1>
-                    <p class="header-p" v-if="!header.desc">Form Description</p>
-                    <p class="header-p">{{ header.desc }}</p>
+                        class="jsi-logo">
+                    <h1 v-if="!form_header.title">Form Title</h1>
+                    <h1>{{ form_header.title }}</h1>
+                    <p class="header-p" v-if="!form_header.desc">Form Description</p>
+                    <p class="header-p">{{ form_header.desc }}</p>
                     <el-divider />
 
                     <div v-for="(form, index) in json" :key="index" v-bind="form" class="form__group mt-25">
@@ -38,7 +34,6 @@
 
 <script>
 import { FormBuilder } from '@/components/form_elements/formbuilder'
-import header from '../assets/json/header.json'
 import axios from 'axios'
 
 export default {
@@ -47,8 +42,8 @@ export default {
         return {
             token: localStorage.getItem('token'),
             login: localStorage.getItem('login'),
+            form_header: {},
             json: [],
-            header: header,
             validation: []
         }
     },
@@ -58,8 +53,8 @@ export default {
         axios.get('https://apps-jsi.ub.ac.id/jsiapps/public/api/dsi_form', {
             headers: { 'Authorization': 'Bearer ' + this.token }, params: { id: this.$route.params.id }
         }).then(response => {
-            console.log(response)
             this.json = JSON.parse(response.data.data.json)
+            this.form_header = JSON.parse(response.data.data.json_header)
             this.addIsRequired()
         }).catch(error => {
             console.log(error)
@@ -154,28 +149,24 @@ export default {
             })
         },
         onSubmit() {
-            // Validation array
             this.validation = []
+            let value = []
 
             // Input type
             const inputs = document.querySelectorAll('.el-input__inner')
             inputs.forEach(input => {
                 if (input.parentElement.parentElement.parentElement.innerText) {
                     if (!input.value && input.parentElement.parentElement.parentElement.hasAttribute('isRequired')) {
-                        // Return validation true if there is no value in required field
-                        // console.log(input.parentElement.parentElement.parentElement.hasAttribute('isRequired'))
                         this.validation.input = true
                     }
                     let inputValues = { [input.parentElement.parentElement.parentElement.innerText.split("\n")[0]]: input.value }
-                    console.log(JSON.stringify(inputValues))
+                    value.push(inputValues)
                 } else {
                     if (!input.value && input.parentElement.parentElement.parentElement.parentElement.hasAttribute('isRequired')) {
-                        // Return validation true if there is no value in required field
-                        // console.log(input.parentElement.parentElement.parentElement.parentElement.hasAttribute('isRequired'))
                         this.validation.input = true
                     }
                     let inputValues = { [input.parentElement.parentElement.parentElement.parentElement.innerText.split("\n")[0]]: input.value }
-                    console.log(JSON.stringify(inputValues))
+                    value.push(inputValues)
                 }
             })
 
@@ -183,53 +174,60 @@ export default {
             const textAreas = document.querySelectorAll('.el-textarea__inner')
             textAreas.forEach(textArea => {
                 if (!textArea.value && textArea.parentElement.parentElement.parentElement.hasAttribute('isRequired')) {
-                    // Return validation true if there is no value in required field
-                    // console.log(textArea.parentElement.parentElement.parentElement.hasAttribute('isRequired'))
                     this.validation.textArea = true
                 }
                 let textAreaValues = { [textArea.parentElement.parentElement.parentElement.innerText.split("\n")[0]]: textArea.value }
-                console.log(JSON.stringify(textAreaValues))
+                value.push(textAreaValues)
             })
 
             // Radio type
             const radios = document.querySelectorAll('.el-radio__original')
-            this.validation.radio = true // Set validation true for no initial value
             radios.forEach(radio => {
                 if (radio.closest('.is-checked') && (radio.parentElement.parentElement.parentElement.parentElement.hasAttribute('isRequired'))) {
                     let radioValues = { [radio.parentElement.parentElement.parentElement.parentElement.innerText.split("\n")[0]]: radio.value }
-                    console.log(JSON.stringify(radioValues))
-                    // Return validation false if there is a value in required field
-                    this.validation.radio = false
+                    value.push(radioValues)
                 }
                 else if (radio.closest('.is-checked')) {
                     let radioValues = { [radio.parentElement.parentElement.parentElement.parentElement.innerText.split("\n")[0]]: radio.value }
-                    console.log(JSON.stringify(radioValues))
+                    value.push(radioValues)
                 }
             })
 
             // Checkbox type
             const checkboxes = document.querySelectorAll('.el-checkbox__original')
-            this.validation.checkbox = true // Set validation true for no initial value
             checkboxes.forEach(checkbox => {
                 if (checkbox.closest('.is-checked') && (checkbox.parentElement.parentElement.parentElement.parentElement.parentElement.hasAttribute('isRequired'))) {
                     let checkboxValues = { [checkbox.parentElement.parentElement.parentElement.parentElement.parentElement.innerText.split("\n")[0]]: checkbox.value }
-                    console.log(JSON.stringify(checkboxValues))
-                    // Return validation false if there is a value in required field
-                    this.validation.checkbox = false
+                    value.push(checkboxValues)
                 }
                 else if (checkbox.closest('.is-checked')) {
-                    this.validation.checkbox = false
                     let checkboxValues = { [checkbox.parentElement.parentElement.parentElement.parentElement.parentElement.innerText.split("\n")[0]]: checkbox.value }
-                    console.log(JSON.stringify(checkboxValues))
+                    value.push(checkboxValues)
                 }
             })
 
-            // Required field validation
-            if (this.validation.input || this.validation.textArea || this.validation.radio || this.validation.checkbox) {
-                // If validation field is true then show alert
-                console.log(this.validation)
+            // Required field validation for input and textarea
+            if (this.validation.input || this.validation.textArea) {
                 this.$message.error("You must fill the required field!")
-            } else { this.$message.success("Form submitted, check console for data.") }
+            } else {
+                const date = (new Date()).toISOString().slice(0, 19).replace("T", " ");
+                axios.post('https://apps-jsi.ub.ac.id/jsiapps/public/api/dsi_form_data', {
+                    date: date,
+                    data: String(value),
+                    unit_jsiform_id: this.$route.params.id
+                }, {
+                    headers: { 'Authorization': 'Bearer ' + this.token }
+                }).then(res => {
+                    if (res.data.api_message) {
+                        this.$message.success("Form submitted")
+                        return this.$router.push({ name: 'dashboard' })
+                    } else {
+                        this.$message.error("Failed to submit form")
+                    }
+                }).catch(error => {
+                    console.log(error)
+                })
+            }
         }
     },
     mounted() {
@@ -246,5 +244,14 @@ export default {
 <style lang="scss" scoped>
 .mt-25 {
     margin-top: 25px;
+}
+
+.jsi-logo {
+    height: 35%;
+    width: 35%;
+    display: block;
+    margin-top: -80px;
+    margin-left: auto;
+    margin-right: auto;
 }
 </style>

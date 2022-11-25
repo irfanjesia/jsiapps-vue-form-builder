@@ -2,7 +2,8 @@
     <div class="form__list">
         <el-table border :data="forms" style="width: 100%">
             <el-table-column prop="id" label="ID" width="40" />
-            <el-table-column prop="json" label="JSON" />
+            <el-table-column prop="json_header" label="Form Header" width="400" />
+            <el-table-column prop="json" label="Form Data" />
             <el-table-column label="Options" width="210">
                 <template slot-scope="scope">
                     <router-link :to="{ name: 'form', params: { id: scope.row.id } }">
@@ -35,7 +36,6 @@ export default {
     created() {
         axios.get('https://apps-jsi.ub.ac.id/jsiapps/public/api/list_dsi_form', { headers: { 'Authorization': 'Bearer ' + this.token } })
             .then(response => {
-                console.log(response)
                 this.forms = response.data.data
             }).catch(error => {
                 console.log(error.response.data)
@@ -47,7 +47,6 @@ export default {
                 axios.get('https://apps-jsi.ub.ac.id/jsiapps/public/api/delete_dsi_form', {
                     headers: { 'Authorization': 'Bearer ' + this.token }, params: { id: id }
                 }).then(response => {
-                    console.log(response)
                     if (response.data.api_message) {
                         location.reload();
                         this.$message.success("Form deleted")

@@ -70,7 +70,6 @@ export default {
                     username: this.model.username,
                     password: this.model.password
                 }).then(response => {
-                    console.log(response)
                     if (response.data.api_message) {
                         localStorage.setItem("login", true)
                         localStorage.setItem("token", response.data.data.access_token)

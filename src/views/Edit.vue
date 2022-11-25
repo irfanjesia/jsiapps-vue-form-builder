@@ -7,9 +7,9 @@
           <!-- Form Header -->
           <div class="form__header">
             <label>Form Title</label>
-            <el-input v-model="forms.title" class="header__input" placeholder="Add form title..." />
+            <el-input v-model="form_header.title" class="header__input" placeholder="Add form title..." />
             <label>Form Description</label>
-            <el-input v-model="forms.desc" :rows="2" type="textarea" class="header__input"
+            <el-input v-model="form_header.desc" :rows="2" type="textarea" class="header__input"
               placeholder="Add form description..." />
             <div v-if="forms.length == 0">
               <p class="empty-p">Drag an element to get started</p>
@@ -64,7 +64,7 @@
 
         <div class="wrapper--snippet">
           <pre
-            style="margin-bottom: -30px;">Form Header: { "title": "{{ forms.title }}", "desc": "{{ forms.desc }}" }</pre>
+            style="margin-bottom: -30px;">Form Header: { "title": "{{ form_header.title }}", "desc": "{{ form_header.desc }}" }</pre>
           <pre>Form Data: {{ forms }}</pre>
         </div>
       </el-aside>
@@ -80,15 +80,11 @@
         <div class="wrapper--forms preview__wrapper">
           <!-- Form Header -->
           <img src="https://apps-jsi.ub.ac.id/jsiapps/public/uploads/2021-11/175d2c1a790beae2006ab0d26f5e964d.png"
-            style="height: 35%; width: 35%; 
-            display: block;
-            margin-top: -80px;
-            margin-left: auto;
-            margin-right: auto;">
-          <h1 v-if="!forms.title">Form Title</h1>
-          <h1>{{ forms.title }}</h1>
-          <p class="header-p" v-if="!forms.desc">Form Description</p>
-          <p class="header-p">{{ forms.desc }}</p>
+            class="jsi-logo">
+          <h1 v-if="!form_header.title">Form Title</h1>
+          <h1>{{ form_header.title }}</h1>
+          <p class="header-p" v-if="!form_header.desc">Form Description</p>
+          <p class="header-p">{{ form_header.desc }}</p>
           <el-divider />
 
           <div v-for="(form, index) in forms" :key="index" v-bind="form" class="form__group" style="margin-top: 25px;">
@@ -123,6 +119,7 @@ export default {
     return {
       token: localStorage.getItem('token'),
       login: localStorage.getItem('login'),
+      form_header: {},
       sortElementOptions: FormBuilder.$data.sortElementOptions
     };
   },
@@ -146,7 +143,6 @@ export default {
           result[newV] = themingVars[v] + suffix
         }
       }
-      // console.log("result", result)
       return result;
     }
   },
@@ -155,8 +151,8 @@ export default {
     axios.get('https://apps-jsi.ub.ac.id/jsiapps/public/api/dsi_form', {
       headers: { 'Authorization': 'Bearer ' + this.token }, params: { id: this.$route.params.id }
     }).then(response => {
-      console.log(response)
       this.forms = JSON.parse(response.data.data.json)
+      this.form_header = JSON.parse(response.data.data.json_header)
     }).catch(error => {
       console.log(error)
     })
@@ -172,21 +168,21 @@ export default {
       FormBuilder.editElementProperties(form)
     },
     onSubmit() {
-      let header = { title: this.forms.title, desc: this.forms.desc }
-      console.log("form header ->", JSON.stringify(header))
-      console.log("form data ->", JSON.stringify(this.forms))
+      let headers = { title: this.form_header.title, desc: this.form_header.desc }
 
       if (this.forms.length > 0) {
         axios.post('https://apps-jsi.ub.ac.id/jsiapps/public/api/update_dsi_form', {
           id: this.$route.params.id,
-          json: JSON.stringify(this.forms)
+          json: JSON.stringify(this.forms),
+          json_header: JSON.stringify(headers),
         }, {
           headers: { 'Authorization': 'Bearer ' + this.token }
         }).then(res => {
-          console.log(res)
           if (res.data.api_message) {
             this.$message.success("Form saved")
             this.forms = []
+            this.form_header.title = ""
+            this.form_header.desc = ""
             return this.$router.push({ name: 'dashboard' })
           } else {
             this.$message.error("Failed to save form")
@@ -309,5 +305,14 @@ export default {
 .header__input {
   margin-top: 10px;
   margin-bottom: 25px;
+}
+
+.jsi-logo {
+  height: 35%;
+  width: 35%;
+  display: block;
+  margin-top: -80px;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>
