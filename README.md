@@ -29,3 +29,7 @@ npm test
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+## Build Status
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8760c6ba-1858-40ef-b046-f0b52e21e66c/deploy-status)](https://app.netlify.com/sites/dsi-forms/deploys)
