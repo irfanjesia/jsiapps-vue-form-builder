@@ -5,7 +5,7 @@ A sample drag & drop form builder project that made with Vue.js and Element UI (
 
 ## Build Status
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/8760c6ba-1858-40ef-b046-f0b52e21e66c/deploy-status)](https://app.netlify.com/sites/dsi-forms/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1f331b20-d6fe-4060-9d79-93cf1e43727d/deploy-status)](https://app.netlify.com/sites/dsi-forms/deploys)
 
 
 ## Build Setup
