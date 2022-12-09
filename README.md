@@ -1,9 +1,11 @@
 # Vue Form Builder
 
-A sample drag & drop form builder project that made with Vue.js and Element UI ([View Live Demo](https://vue-formbuilder.netlify.com/))
+A sample drag & drop form builder project that made with Vue.js and Element UI ([View Live Demo](https://dsi-forms.netlify.com/))
 
-![alt text](https://d15k2d11r6t6rl.cloudfront.net/public/users/Integrators/0db9f180-d222-4b2b-9371-cf9393bf4764/c69e8df5-3118-4e31-8e2b-c875e264bf55/form-builder-vue.png "Vue Form Builder Screenshot")
 
+## Build Status
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8760c6ba-1858-40ef-b046-f0b52e21e66c/deploy-status)](https://app.netlify.com/sites/dsi-forms/deploys)
 
 
 ## Build Setup
@@ -29,7 +31,3 @@ npm test
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-
-## Build Status
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/8760c6ba-1858-40ef-b046-f0b52e21e66c/deploy-status)](https://app.netlify.com/sites/dsi-forms/deploys)
