@@ -3,11 +3,6 @@
 A sample drag & drop form builder project that made with Vue.js and Element UI ([View Live Demo](https://dsi-forms.netlify.com/))
 
 
-## Build Status
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/ad707af5-8acd-4e4a-821d-fc302d6503ec/deploy-status)](https://app.netlify.com/sites/dsi-forms/deploys)
-
-
 ## Build Setup
 
 ``` bash
